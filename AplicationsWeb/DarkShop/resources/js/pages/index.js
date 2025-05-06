@@ -120,3 +120,15 @@ document.addEventListener('DOMContentLoaded', function() {
     adjustHeaderSpacing();
     window.addEventListener('resize', adjustHeaderSpacing);
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const header = document.querySelector('.header_introduction_layout');
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 10) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+});

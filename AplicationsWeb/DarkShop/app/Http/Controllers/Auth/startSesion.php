@@ -52,8 +52,7 @@ class startSesion extends Controller
             'documento' => $request->documento,
             'nombre' => $request->nombre,
             'correo' => $request->correo,
-            'documento' => $request->documento,
-            'contraseña' => Hash::make($request->contraseña), 
+            'contraseña' => Hash::make(value: $request->contraseña), 
             'id_rol' => $request->id_rol,
         ]);
     

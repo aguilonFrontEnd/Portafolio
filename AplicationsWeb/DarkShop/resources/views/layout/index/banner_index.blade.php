@@ -1,4 +1,6 @@
 @vite(['resources/scss/layout/index/banner_index.scss'])
+@vite('resources/js/pages/index.js')
+
 
 <div class="container_banner">
     <div class="banner-track">

@@ -458,11 +458,12 @@ body {
 
     .section_footer {
         position: relative;
-        background-color: map.get(v.$colors, "veryLightGray");
+        background-color: map.get(v.$colors, "offWhite");
         @include m.center-flex(column, space-between, center, 2%, 100vh, 100%);
         animation-delay: 0.8s;
 
         .span_email{
+            margin-top: 5%;
             background-color: map.get(v.$colors, "jetBlack");
             @include m.center-flex(row, space-between, center, 2%, 18vh, 100%);
 

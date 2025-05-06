@@ -16,9 +16,6 @@
 </head>
 <body>
     
-    {{-- Section de introducción al index del vendedor para la visualizacion de sus productos --}}
-    <section class="section section_introduction">
-
         {{-- Banner de ventajas de la darkshop --}} 
         <span class="span_introduction">
             @include('layout.index.banner_index')
@@ -26,49 +23,14 @@
 
         {{-- Encabezado de la darkshop --}}
         <header class="header_introduction">
-
-            <h1 class="header_h1">DARKSHOP</h1>
-        
-            <nav class="header_nav">
-        
-                <button type="button" class="btn_nav">Inicio</button>
-                <button type="button" class="btn_nav">Outlet</button>
-                <button type="button" class="btn_nav">Categorias</button>
-                <button type="button" class="btn_nav">Servicios</button>
-                <button type="button" class="btn_nav">Conjuntos</button>
-                <button type="button" class="btn_nav">Contacto</button>
-            </nav>
-
-            <figure class="header_figure">
-                <a href="{{ route('vendor.dashboard') }}" class="profile-link">
-                    @auth
-                        @if(auth()->user()->foto_perfil)
-                            <img src="{{ auth()->user()->foto_perfil }}" 
-                                 alt="Foto de {{ auth()->user()->nombre }}" 
-                                 class="image_figure">
-                        @else
-                            <img src="{{ asset('images/default-profile.jpg') }}" 
-                                 alt="Foto por defecto" 
-                                 class="image_figure">
-                        @endif
-                    @else
-                        <img src="{{ asset('images/default-profile.jpg') }}" 
-                             alt="Usuario no autenticado" 
-                             class="image_figure">
-                    @endauth
-                </a>
-            </figure>
-        
+            @include('layout.index.header_index')
         </header>
 
         {{-- Carrusel de la plataforma darkshop --}}
         <figure class="figure_introduction">
-            <img src="https://d22fxaf9t8d39k.cloudfront.net/cd49cceef2a788a054e36ef4aca25af3f561da76763422ff512037157365273132864.jpg" alt="ImagenUno" class="image_carrusel active">
-            <img src="https://d22fxaf9t8d39k.cloudfront.net/750d1307e03e48caffb31ca6c80bfaeaab39ee3f82a35fc58b2384c318da03b532864.jpeg" alt="ImagenDos" class="image_carrusel">
-            <img src="https://d22fxaf9t8d39k.cloudfront.net/147777a44445bfa8baaafaa57c77c399dae2a8ff9b671a8a6de3a47ee850ab1b32864.jpeg" alt="ImagenTres" class="image_carrusel">
+            @include('layout.index.carrusel_index')
         </figure>
 
-    </section>
 
     {{-- Section de productos en outlet de la darkshop --}}
     <section class="section section_outlet ">

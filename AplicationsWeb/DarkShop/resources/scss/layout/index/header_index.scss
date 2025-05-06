@@ -1,0 +1,74 @@
+@use '/resources/scss/abstracts/mixin' as m;
+@use '/resources/scss/abstracts/variables' as v;
+
+* {
+    @include m.spacing(0%, 0%); 
+    overflow-x: hidden;
+}
+.header_introduction_layout{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 1000;
+    background-color: #fff;
+    border: 1px solid black;
+    @include m.center-flex(row, space-evenly, center, 8vw, 20vh, 100%);
+    transition: all 0.08s ease;
+    margin-top: 3%;
+
+
+
+    .header_h1{
+        @include m.font-style(3.2vw, bold, .5px, none, left, none);
+    }
+
+    .header_nav{
+        @include m.center-flex(row, space-between, center, none, 100%, 35%);
+
+        .btn_nav{
+            padding: 2% 3%;
+            @include m.font-style(.9vw, none, .8px, none, left, none);
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+        }
+    }
+
+    .header_figure{
+        border: 1px solid black;
+        @include m.center-flex(row, space-evenly, center, none, 45%, 4%);
+        @include m.border-radius(100%);
+        overflow: hidden;
+
+        a{
+            @include m.size(100%, 100%);
+            @include m.center-flex(row, space-evenly, center, none, 100%, 100%);
+            @include m.border-radius(100%);
+            overflow: hidden;
+            text-decoration: none;
+
+            .image_figure{
+                @include m.size(100%, 100%);
+                object-fit: cover;
+            }
+        }
+    }
+
+    &.scrolled {
+
+            height: 10vh;
+            @include m.center-flex(row, space-evenly, center, 35vw, 10vh, 100%);
+            color: #fff;
+            background-color: black;
+            margin-top: 0%;
+
+            .btn_nav{
+                color: white;
+            }
+
+            .header_figure{
+                display: none;
+            }
+        }
+}
