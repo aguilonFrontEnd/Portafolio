@@ -1,0 +1,30 @@
+// 🎨 Paleta de colores ajustada con tono intermedio
+$colors: (
+
+// ESCALA DE GRISES 
+  "darkGray": #2F2F2F,         // Gris muy oscuro
+  "mediumGray": #555555,       // Gris medio
+  "lightGray": #AAAAAA,        // Gris claro
+  "middleGray": #C5C5C5,       // Gris intermedio
+  "veryLightGray": #E0E0E0,
+  
+// ESCALA DE BLANCOS
+  "pureWhite": #FFFFFF,        // Blanco puro
+  "offWhite": #F2F2F2,         // Blanco roto
+  "pearlWhite": #F9F9F9,       // Blanco perlado
+
+  // ESCALA DE NEGROS
+  "darkBlack": #1A1A1A,        // Negro mate
+  "jetBlack": #000000,         // Negro profundo
+  "charcoalBlack": #2D2D2D,    // Negro grisáceo
+  "midnightBlack": #121212,    // Negro oscuro
+  "ebonyBlack": #0A0A0A,       // Negro brillante
+
+  // ESCALA DE ROJOS
+  "elegantRed": #9B1B30,       // Rojo elegante
+  "alertRed": #D32F2F,         // Rojo alerta
+
+  // ESCALA DE AMARILLOS
+  "vibrantYellow": #FBC02D,    // Amarillo fuerte
+  "starYellow": #FFD700       // Amarillo dorado (valoraciones)
+);

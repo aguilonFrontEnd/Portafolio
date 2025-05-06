@@ -1,0 +1,47 @@
+@use "sass:map";
+@use '/resources/scss/abstracts/mixin' as m;
+@use '/resources/scss/abstracts/variables' as v;
+
+*{
+    @include m.spacing(0%, 0%); 
+    overflow: hidden;
+
+    .dashboard_nav {
+        background-color: map.get(v.$colors, "veryLightGray");
+        @include m.center-flex(row, space-evenly, center, none, 100%, 100%);
+
+        .option_nav {
+                list-style-type: none;
+                padding: 0;
+                @include m.center-flex(column, center, end, none, 80%, 60%);
+
+            .item_nav {
+                @include m.center-flex(column, center, end, none, 100%, 100%);
+   
+                .btn_nav {
+                    background-color: transparent;
+                    color: map.get(v.$colors, "darkGray");
+                    border: none;
+                    padding: .6vw 1vw;
+                    width: 100%;
+                    cursor: pointer;
+                    @include m.border-radius(4px);
+                    @include m.font-style(1vw, none, .5px, none, end, none);
+                }
+            }
+
+            #add{
+                background-color: map.get(v.$colors, "darkGray");
+                @include m.center-flex(center, center, center, 1vw, 80%, 100%);
+                color: map.get(v.$colors, "offWhite");
+                transition: .5s all;
+
+                &:hover{
+                    border: 1px solid map.get(v.$colors, "darkGray");
+                    color: map.get(v.$colors, "darkGray");
+                    background-color: transparent;
+                }
+            }
+        }
+    }
+}

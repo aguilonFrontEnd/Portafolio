@@ -1,0 +1,53 @@
+@use "sass:map";
+@use '/resources/scss/abstracts/mixin' as m;
+@use '/resources/scss/abstracts/variables' as v;
+
+
+*{
+    @include m.spacing(0%, 0%); 
+    overflow: hidden;
+
+    /* CONTENEDOR PADRE DEL DASHBOARD */
+    .dashboard_header{
+        border-bottom: 1px solid black;
+        @include m.center-flex(row, space-evenly, center, 52vw, 100%, 100%);
+        
+        /* CONETENEDOR DE INFORMACION DE LA PLATAFORMA  */
+        .span_header{
+            @include m.center-flex(row, start, center, .5vw, 100%, 30%);
+
+            /* Redirección al index */
+            a{
+                @include m.center-flex(none, center, center, none, 30%, 10%);
+                text-decoration: none;
+                color: black;
+                
+                /* Icono de volver atras "Index Usuario Logueado" */
+                i{
+                    padding: 1vw;
+                    font-size: 1.2vw;
+                    border: 1px solid black;
+                    @include m.border-radius(100%);
+                    cursor: pointer;
+                }
+            }
+
+
+            /* Titulo de la plataforma */
+            .span_h1{
+                @include m.font-style(3.5vw, bold, 1.5px, none, left, none);
+            }
+        }
+
+        /* CONTENEDOR DE LA FOTO DE PERFIL DEL USUARIO LOGUEADO */
+        .figure_header{
+            @include m.center-flex(none, center, center, none, 47%, 5%);
+            @include m.border-radius(100%);
+
+            /* Imagen de perfil */
+            .image_figure{
+                @include m.image-responsive(100%, 100%, cover);
+            }
+        }
+    }
+}

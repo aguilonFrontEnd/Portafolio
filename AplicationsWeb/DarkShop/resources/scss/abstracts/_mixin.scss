@@ -1,0 +1,202 @@
+// 📌 1. Mixin para centrar elementos con Flexbox
+@mixin center-flex($direction, $justify, $align, $gap, $height, $width) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+    gap: $gap;
+    height: $height;
+    width: $width;
+  }
+  
+  // 📌 2. Mixin para centrar elementos con Grid
+  @mixin center-grid($columns, $rows, $height, $width) {
+    display: grid;
+    grid-template-columns: $columns;
+    grid-template-rows: $rows;
+    height: $height;
+    width: $width;
+  }
+  
+  // 📌 3. Mixin para estilos de fuente
+  @mixin font-style($size, $weight, $spacing, $overflow, $textLocation, $decoration) {
+    font-size: $size;
+    font-weight: $weight;
+    letter-spacing: $spacing;
+    text-overflow: $overflow;
+    text-align: $textLocation;
+    text-decoration: $decoration;
+  }
+  
+  // 📌 4. Mixin para bordes redondeados
+  @mixin border-radius($radius) {
+    border-radius: $radius;
+  }
+  
+  // 📌 5. Mixin para sombras
+  @mixin box-shadow($x, $y, $blur, $color) {
+    box-shadow: $x $y $blur $color;
+  }
+  
+  // 📌 6. Mixin para crear un borde personalizado
+  @mixin border($width, $style, $color) {
+    border: $width $style $color;
+  }
+  
+  // 📌 7. Mixin para márgenes y padding personalizados
+  @mixin spacing($margin, $padding) {
+    margin: $margin;
+    padding: $padding;
+  }
+  
+  // 📌 8. Mixin para transiciones
+  @mixin transition($property, $duration, $ease) {
+    transition: $property $duration $ease;
+  }
+  
+  // 📌 9. Mixin para tamaño de un elemento
+  @mixin size($height, $width) {
+    height: $height;
+    width: $width;
+  }
+  
+  // 📌 10. Mixin para animaciones
+  @mixin animation($name, $duration, $timing, $iteration) {
+    animation: $name $duration $timing $iteration;
+  }
+  
+  // 📌 11. Mixin para contenedores fluidos
+  @mixin container($max-width, $padding) {
+    max-width: $max-width;
+    margin: 0 auto;
+    padding: $padding;
+  }
+  
+  // 📌 12. Mixin para gradientes
+  @mixin gradient-bg($color1, $color2, $direction) {
+    background: linear-gradient($direction, $color1, $color2);
+  }
+  
+  // 📌 13. Mixin para imágenes responsivas
+  @mixin image-responsive($width, $height, $object-fit) {
+    display: flex;
+    max-width: $width;
+    height: $height;
+    object-fit: $object-fit;
+  }
+  
+  // 📌 14. Mixin para esconder elementos
+  @mixin hide-element {
+    display: none;
+  }
+  
+  // 📌 15. Mixin para bordes de caja y sombras
+  @mixin box-shadow-border($x, $y, $blur, $shadow-color, $border-width, $border-color) {
+    box-shadow: $x $y $blur $shadow-color;
+    border: $border-width solid $border-color;
+  }
+  
+  // 📌 16. Mixin para imágenes de fondo con propiedades
+  @mixin background-image($url, $size, $position, $repeat) {
+    background-image: url($url);
+    background-size: $size;
+    background-position: $position;
+    background-repeat: $repeat;
+  }
+  
+  // 📌 17. Mixin para bordes redondeados con transiciones
+  @mixin border-radius-transition($radius, $duration) {
+    border-radius: $radius;
+    transition: border-radius $duration;
+  }
+  
+  // 📌 18. Mixin para fuente de enlace
+  @mixin link-style($color, $decoration) {
+    color: $color;
+    text-decoration: $decoration;
+  }
+  
+  // 📌 19. Mixin para colapsar en pantallas pequeñas
+  @mixin collapse-mobile($max-width) {
+    @media (max-width: $max-width) {
+      display: none;
+    }
+  }
+  
+  // 📌 20. Mixin para animación con delay
+  @mixin animation-delay($name, $duration, $timing, $iteration, $delay) {
+    animation: $name $duration $timing $iteration $delay;
+  }
+  
+  // 📌 21. Mixin para bordes externos 
+  @mixin position-border($bbl, $bbr, $btl, $btr){
+    border-top-right-radius: $btl;
+    border-top-left-radius: $btl;
+    border-bottom-left-radius: $btr;
+    border-bottom-right-radius: $bbr;
+  }
+
+  // 📌 22. Mixin para posiciones absolutas
+  @mixin position-absolute($top, $left, $right, $bottom) {
+    position: absolute;
+    top: $top;
+    left: $left;
+    right: $right;
+    bottom: $bottom;
+  }
+
+  // 📌 23. Mixin para posiciones fixed
+  @mixin position-fixed($height, $width) {
+    position: fixed;
+    height: $height;
+    width: $width;
+  }
+
+  // 📌 24. Mixin para transición en el color de fondo
+@mixin transition-bg-color($color, $duration) {
+    background-color: $color;
+    transition: background-color $duration ease;
+  }
+  
+  // 📌 25. Mixin para sombra con transición de escala
+  @mixin external-shadow-scale($x, $y, $blur, $color, $duration) {
+    box-shadow: $x $y $blur $color;
+    transition: box-shadow $duration, transform $duration;
+    transform: scale(1);
+  }
+  
+  // 📌 26. Mixin para sombra con transición
+  @mixin shadow-transition($x, $y, $blur, $color, $duration) {
+    box-shadow: $x $y $blur $color;
+    transition: box-shadow $duration ease-in-out;
+  }
+  
+  // 📌 27. Mixin para transición en el tamaño de fuente
+  @mixin font-size-transition($size, $duration) {
+    font-size: $size;
+    transition: font-size $duration ease;
+  }
+  
+  // 📌 28. Mixin para transición en el color del texto
+  @mixin text-color-transition($color, $duration) {
+    color: $color;
+    transition: color $duration ease;
+  }
+  
+  // 📌 29. Mixin para transiciones suaves en márgenes y padding
+  @mixin margin-padding-transition($margin, $padding, $duration) {
+    margin: $margin;
+    padding: $padding;
+    transition: margin $duration, padding $duration;
+  }
+  
+  // 📌 30. Mixin para animación en opacidad
+  @mixin opacity-animation($opacity, $duration) {
+    opacity: $opacity;
+    transition: opacity $duration;
+  }
+  
+
+
+
+

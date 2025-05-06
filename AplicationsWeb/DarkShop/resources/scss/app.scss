@@ -1,0 +1,27 @@
+// IMPORTACION GENERALES DE ESTILOS DE LA PLATAFORMA DARKSHOP 
+
+// 1️ Abstracts (Utilidades, variables, mixins)
+@use 'scss/abstracts/variables' as v;
+@use 'scss/abstracts/mixins' as m;
+
+// 2 Layouts (Dashboard, index)
+@use 'scss/layout/dashboard/header_dashboard' as header;
+@use 'scss/layout/dashboard/nav_dashboard' as nav;
+
+@use 'scss/layout/index/banner_index' as banner;
+@use 'scss/layout/index/header_index' as header;
+@use 'scss/layout/index/carrusel_index' as carrusel;
+
+
+// 3 Inicio de sesion (Buyer, vendor)
+@use 'scss/auth/auth_login' as auth_login;
+@use 'scss/auth/auth_register' as auth_login;
+
+// 4 Dasboard (Buyer, vendor)
+@use 'scss/roles/vendor/vendor_dashboard' as vendor;
+
+// 5 Vista de prenda de modificacion y eliminación de la prenda (Vendor)
+@use 'scss/form/show_clothes' as form;
+
+
+

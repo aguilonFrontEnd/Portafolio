@@ -1,0 +1,107 @@
+@use "sass:map";
+@use '/resources/scss/abstracts/mixin' as m;
+@use '/resources/scss/abstracts/variables' as v;
+ 
+
+*{
+    @include m.spacing(0%, 0%); 
+    box-sizing: border-box;
+
+    body{
+
+        @include m.center-flex(none, center, center, none, 100vh, 100vw);
+
+        .container_main{ 
+            @include m.center-flex(none, center, center, none, 85%, 50%);
+
+            .figure_main{
+                @include m.center-flex(none, center, center, none, 100%, 130%);
+                overflow: hidden;
+
+                .vid_login{
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                    overflow: hidden;
+                    border-top-right-radius: 100px;
+                }
+            }
+
+            .article_main{
+                @include m.center-flex(none, center, center, none, 90%, 90%);
+
+                /* Contenedor padre del formulario de inicio de sesion */
+                .form_register{
+                    @include m.center-flex(column, center, center, .5vw, 90%, 100%);
+                    border-left: none;
+                    padding-top: 1vw;
+                    box-shadow: 10px -1px 20px  map.get(v.$colors, "mediumGray"),
+                                1px 5px 20px  map.get(v.$colors, "mediumGray");
+                                border-top-left-radius: 15px;
+                                border-bottom-left-radius: 5px;
+
+                    .span_register{
+                        @include m.center-flex(column, center, center, none, 15%, 100%);
+
+                        .input_dates{
+                            @include m.center-flex(column, start, start, 2px, 90%, 75%);
+
+                            .label_post{
+                                padding-left: .2vw;
+                                @include m.font-style(.85vw, none, none, none, left, none);
+                            }
+
+                            .input_post{
+                                @include m.size(70%, 100%);
+                                @include m.font-style(1.2vw, none, none, none, left, none);
+                                padding: 5%;
+                                @include m.border-radius(4px);
+                                outline: none;
+                            }
+                        }
+                    }
+
+                    .btn_roles{
+                        @include m.center-flex(row, center, center, none, 15%, 100%);
+
+                        .btn_rol{
+                            @include m.size(62%, 35%);
+                            background-color: transparent;
+                            color: map.get(v.$colors, "mediumGray");
+                            @include m.border-radius(1px);
+                            cursor: pointer;
+                            border: none;
+                            border-bottom: 1px solid map.get(v.$colors, "mediumGray");
+                        }
+
+                        .btn_rol.acti {
+                            background-color: map.get(v.$colors, "mediumGray");
+                            color: map.get(v.$colors, "veryLightGray");
+                        }
+                    }
+
+                    .btn_post{
+                        @include m.center-flex(none, center, center, none, 10%, 100%);
+
+                        .btn_sesion{
+                            @include m.size(90%, 50%);
+                            color: map.get(v.$colors, "veryLightGray");
+                            background-color: map.get(v.$colors, "mediumGray");
+                            border: none;
+                            @include m.border-radius(4px);
+                            @include m.font-style(.95vw, none, none, none, center, none);
+                            cursor: pointer;
+                            transition: .5s all;            
+
+                            &:hover{
+                                color: map.get(v.$colors, "mediumGray");
+                                background-color: transparent;
+                                border: 1px solid map.get(v.$colors, "mediumGray");
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,376 @@
+@use "sass:map";
+@use '/resources/scss/abstracts/mixin' as m;
+@use '/resources/scss/abstracts/variables' as v;
+
+
+*{
+    @include m.spacing(0%, 0%); 
+    box-sizing: border-box;
+
+    body{
+        border: 1px solid black;
+        @include m.center-flex(none, center, center, none, 100vh, 100vw);
+        overflow: hidden;
+        
+        .form_section{
+            @include m.center-grid(60% 1fr, 1fr, 65vh, 55%);
+
+            /* Contenedor a la izquierda del formulario de datos */
+            .span_form{
+                box-shadow: 15px 5px 20px 15px map.get(v.$colors, "middleGray");
+                @include m.center-grid(1fr, 1fr 1fr 1fr 1fr 1fr 1fr, 100%, 100%);
+                padding: 5%;
+
+                /* Contenedor padre de los input de registro */
+                .container_form{
+                    @include m.center-flex(none, center, end, none, 100%, 100%);
+                    padding: 1.2%;
+                }
+
+                /* Contenedor de la categoria de la prenda a registrar */
+                .input_category{
+                    flex: 1;
+
+                  /* Input de seleccionar la categoria de la prenda */
+                  .select_category{
+                        @include m.center-flex(none, center, center, none, 70%, 100%);
+                        margin-bottom: 1.5%;                        
+                        padding-left: 1.5vw;
+                        outline: none;
+                        border: none;
+                        border-bottom: 1px solid map.get(v.$colors, "mediumGray");
+                        @include m.font-style(1.1vw, none, .5px, none, left, none);
+                        color: map.get(v.$colors, "mediumGray");
+
+                        /* Opciones del select de categorías */
+                        option {
+                            background-color: map.get(v.$colors, "mediumGray");
+                            color: map.get(v.$colors, "pureWhite");
+
+                            &:hover {
+                                background-color: map.get(v.$colors, "pureWhite");
+                                color: map.get(v.$colors, "mediumGray");
+                            }
+
+                            &:focus {
+                                outline: none; 
+                            }
+                        }
+                    }
+                }
+
+                /* Contenedor de codigo y talla de la prenda a registrar */
+                .input_auth{
+                    @include m.center-flex(row, center, center, 10px, 100%, 100%);
+
+                    /* Contenedor del codigo */
+                    .span_number{
+                        @include m.center-flex(column, center, start, none, 100%, 60%);
+
+                        /* Nombre del input */
+                        .label_number{
+                            @include m.size(35%, 60%);
+                            margin-left: .3vw;
+                            @include m.font-style(.7vw, none, none, none, left, none);
+                            color: map.get(v.$colors, "mediumGray");
+                        }
+
+                        /* Input del codigo */
+                        .input_number{
+                            @include m.size(75%, 100%);
+                            outline: none;
+                            border: 1px solid  map.get(v.$colors, "mediumGray");
+                            @include m.border-radius(4px);
+                            @include m.font-style(1vw, bold, .5px, none, left, none);
+                            padding: 3%;
+                            color: map.get(v.$colors, "mediumGray");
+                            text-transform: uppercase;   
+                        }
+                    }
+
+                    /* Contenedor de tallas */
+                    .span_size{
+                        @include m.size(100%, 38%);
+
+                        /* Input de tallas si no es de calzado */
+                        .size_input{
+                            @include m.center-flex(row, space-evenly, center, none, 100%, 100%);
+                            padding-top: 1.5vw;
+                            padding-left: 1vw;
+                            backface-visibility: hidden;
+                            transform-style: preserve-3d;
+                            animation: flipIn 0.5s ease forwards;
+
+                            /* Boton de tallas */
+                            .btn_size{
+                                background-color: transparent;
+                                color: map.get(v.$colors, "mediumGray");
+                                border: 1px solid map.get(v.$colors, "mediumGray");
+                                padding: 4%;
+                                margin-right: .2vw;
+                                @include m.border-radius(4px);
+                                transition: .5s ease-in-out;
+                                cursor: pointer;
+
+                                /* Cuando la talla se active */
+                                &.acti {
+                                    background-color: map.get(v.$colors, "mediumGray");
+                                    color: map.get(v.$colors, "pureWhite");
+                                    transform: rotate(-10deg);
+                                    border: none;
+                                }
+                            }
+                        }
+
+                        /* Input de tallas si si es de calzado */
+                        .size_select{
+                            @include m.center-flex(none, center, end, none, 100%, 100%);
+
+                            /* select para calzado */
+                            .select_size{
+                                @include m.center-flex(none, center, center, none, 80%, 90%);
+                                padding-left: 1.5vw;
+                                margin-top: .8vw;
+                                outline: none;
+                                border: none;
+                                border-bottom: 1px solid map.get(v.$colors, "mediumGray");
+                                @include m.font-style(1.1vw, none, .5px, none, left, none);
+                                color: map.get(v.$colors, "mediumGray");
+                                backface-visibility: hidden;
+                                transform-style: preserve-3d;        
+                                animation: flipIn 0.5s ease forwards;
+
+                                /* Opciones del select de categorías */
+                                option{
+                                    background-color: map.get(v.$colors, "mediumGray");
+                                    color: map.get(v.$colors, "pureWhite");
+
+                                    &:hover {
+                                        background-color: map.get(v.$colors, "pureWhite");
+                                        color: map.get(v.$colors, "mediumGray");
+                                    }
+
+                                    &:focus {
+                                        outline: none; 
+                                    }
+                                }
+                            }
+                        }
+
+                        /* Animacion para cambio de tallaje */
+                        @keyframes flipIn {
+                            0% {
+                              opacity: 0;
+                              transform: rotateX(-90deg);
+                            }
+                            100% {
+                              opacity: 1;
+                              transform: rotateX(0deg);
+                            }
+                        } 
+                    }
+                }
+
+                /* Contenedor del nombre de la prenda a registrar */
+                .input_name{
+                    @include m.center-flex(row, center, center, none, 100%, 100%);
+
+                    /* Contenedor del nombre */
+                    .span_name{
+                        @include m.center-flex(column, center, start, none, 100%, 100%);
+
+                        /* Nombre del input */
+                        .label_name{
+                            @include m.size(30%, 60%);
+                            margin-left: .3vw;
+                            @include m.font-style(.7vw, none, none, none, left, none);
+                            color: map.get(v.$colors, "mediumGray");
+                        }
+
+                        /* Input del nombre */
+                        .input_name{
+                            @include m.size(73%, 100%);
+                            outline: none;
+                            border: 1px solid  map.get(v.$colors, "mediumGray");
+                            @include m.border-radius(4px);
+                            @include m.font-style(1vw, bold, .5px, none, left, none);
+                            padding: 3%;
+                            color: map.get(v.$colors, "mediumGray");
+                            text-transform: uppercase;   
+                        }
+                    }
+                }
+                
+                /* Contenedor de la marca el precio y la cantidad de la prenda a registrar */
+                .input_info{
+                    @include m.center-flex(row, center, center, 15px, 100%, 100%);
+                    
+                    /* Contenedor del marca */
+                    .span_brand{
+                        @include m.center-flex(column, center, start, none, 100%, 300%);
+
+                        /* Nombre del input */
+                        .label_brand{
+                            @include m.size(26%, 60%);
+                            margin-left: .3vw;
+                            @include m.font-style(.7vw, none, none, none, left, none);
+                            color: map.get(v.$colors, "mediumGray");
+                        }
+
+                        /* Input del marca */
+                        .input_brand{
+                            @include m.size(75%, 100%);
+                            outline: none;
+                            border: 1px solid  map.get(v.$colors, "mediumGray");
+                            @include m.border-radius(4px);
+                            @include m.font-style(1vw, bold, .5px, none, left, none);
+                            padding: 5%;
+                            color: map.get(v.$colors, "mediumGray");
+                            text-transform: uppercase;   
+                        }
+                    }
+
+                    /* Contenedor del precio */
+                    .span_price{
+                        @include m.center-flex(column, center, start, none, 100%, 200%);
+
+                        /* Nombre del input */
+                        .label_price{
+                            @include m.size(26%, 60%);
+                            margin-left: .3vw;
+                            @include m.font-style(.7vw, none, none, none, left, none);
+                            color: map.get(v.$colors, "mediumGray");
+                        }
+
+                        /* Input del precio */
+                        .input_price{
+                            @include m.size(75%, 100%);
+                            outline: none;
+                            border: 1px solid  map.get(v.$colors, "mediumGray");
+                            @include m.border-radius(4px);
+                            @include m.font-style(1vw, bold, .5px, none, left, none);
+                            padding: 5%;
+                            color: map.get(v.$colors, "mediumGray");
+                            text-transform: uppercase;   
+                        }
+                    }
+
+                    /* Contenedor del cantidad */
+                    .span_amount{
+                        @include m.center-flex(column, center, start, none, 100%, 100%);
+                        
+
+                        /* Nombre del input */
+                        .label_amount{
+                            @include m.size(26%, 60%);
+                            margin-left: .3vw;
+                            @include m.font-style(.7vw, none, none, none, left, none);
+                            color: map.get(v.$colors, "mediumGray");
+                        }
+
+                        /* Input del cantidad */
+                        .input_amount{
+                            @include m.size(75%, 100%);
+                            outline: none;
+                            border: 1px solid  map.get(v.$colors, "mediumGray");
+                            @include m.border-radius(4px);
+                            @include m.font-style(1vw, bold, .5px, none, left, none);
+                            padding: 15%;
+                            color: map.get(v.$colors, "mediumGray");
+                            text-transform: uppercase;   
+                        }
+                    }
+                }
+
+                /* Contenedor para subir la imagen  */
+                .input_image{
+                    @include m.center-flex(row, center, center, none, 100%, 100%);
+                    margin-top: .5vw;
+
+                    /* Contenedor del input */
+                    .span_image{
+                        @include m.center-flex(column, center, start, none, 100%, 100%);
+
+                        /* Input file "OCULTO" */ 
+                        .input-file {
+                            display: none; 
+                        }
+
+                            .custom-label.acti {
+                                background-color: map.get(v.$colors, "darkGray");
+                                color: map.get(v.$colors, "pureWhite");
+                            }
+                    
+                            /* Input file convertido */
+                            .custom-label {
+                                display: inline-block;
+                                @include m.center-flex(none, center, center, none, 100%, 100%);
+                                @include m.size(90%, 100%);
+                                @include m.border-radius(4px);
+                                @include m.font-style(1.1vw, none, 1px, none, left, none);
+                                cursor: pointer;
+                                transition: background 0.3s;
+                                background-color: transparent;
+                                color: map.get(v.$colors, "darkGray");
+                                border: 1px solid map.get(v.$colors, "darkGray");
+                        
+                                &:hover {
+                                    background-color: map.get(v.$colors, "darkGray");
+                                    color: map.get(v.$colors, "pureWhite");
+                                }
+                            }
+                        }
+                }
+
+                /* Contenedor boton de registrar la prenda */
+                .input_btn{
+                    @include m.center-flex(row, end, center, none, 100%, 100%);
+                    margin-top: .4vw;
+
+                    /* Contenedor del boton */
+                    .span_btn{
+                        @include m.center-flex(row, end, center, none, 20%, 60%);
+                    }
+
+                    /* boton de registro */
+                    .btn_post{
+                        padding: 6% 20%;
+                        background-color: map.get(v.$colors, "darkGray");
+                        color: map.get(v.$colors, "middleGray");
+                        border: none;
+                        transition: background 0.3s;
+                        cursor: pointer;
+                        @include m.border-radius(4px);
+                        @include m.font-style(.7vw, none, none, none, left, none);
+
+                        &:hover{
+                            background-color: transparent;
+                            color: map.get(v.$colors, "darkGray");
+                            border: 1px solid map.get(v.$colors, "darkGray");
+                        }
+                    }
+
+                    #destroy{
+                        padding-right: 1.5vw;
+                        border: none;
+                        background-color: transparent;
+                        color: black;
+                    }
+                }
+            }
+            
+            /* Contenedor a la izquierda del formulario de imagenes */
+            .figure_form{
+                border: 1px solid black;
+                background-color: map.get(v.$colors, "darkGray");
+                @include m.center-flex(none, center, center, none, 100%, 100%);
+
+                /* Imagen por defecto del formulario */
+                .image_form{
+                    @include m.image-responsive(100%, 100%, cover);
+                    opacity: .6;
+                }
+            }
+        }
+    }
+}

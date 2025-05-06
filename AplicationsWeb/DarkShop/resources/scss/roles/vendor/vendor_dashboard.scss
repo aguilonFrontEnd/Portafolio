@@ -1,0 +1,863 @@
+@use "sass:map";
+@use '/resources/scss/abstracts/mixin' as m;
+@use '/resources/scss/abstracts/variables' as v;
+
+
+*{
+    @include m.spacing(0%, 0%); 
+    box-sizing: border-box;
+
+    body{
+        @include m.center-grid(20% 1fr, 25% 1fr, 100vh, 100vw);
+        grid-template-areas: 
+        "headerDashboad headerDashboad"
+        "navDashboard mainDashboard";
+
+        /* CONTENEDOR DEL ENCABEZADO DEL DASHBOARD DEL VENDEDOR */
+        .container_header{
+            grid-area: headerDashboad;
+            @include m.size(100%, 100vw);
+            overflow: hidden;
+        }
+
+        /* CONTENEDOR DEL MENU DE NAVEGACION DEL DASHBOARD DEL VENDEDOR */
+        .container_nav{
+            grid-area: navDashboard;
+            @include m.size(100%, 100%);
+            box-shadow: 40px 0 10px map.get(v.$colors, "middleGray");
+        }
+
+        /* CONTENEDOR DE LAS SECCIONES A INTERACTUAR POR EL VENDEDOR */
+        .container_main{
+            grid-area: mainDashboard;
+            @include m.size(100%, 100%);
+            padding: 1%;
+
+            /* Contenedor padre de las secciones de interaccion del vendedor */
+            .section{
+                @include m.size(100%, 100%);
+                display: none;
+            }
+
+            /* Section por defecto al cargar la pagina en la plataforma */
+            .section_default{
+                @include m.center-flex(column, center, center, 1vw, 115%, 100%);
+                padding: 8%;
+
+                /* Titulo de introduction */
+                .article_h2{
+                    @include m.font-style(2.4vw, bold, .5px, none, left, none);
+                }
+
+                /* Descripcion del dashboard */
+                .article_p{
+                    @include m.font-style(.9vw, none, none, none, left, none);
+                    color: map.get(v.$colors, "mediumGray");
+                    width: 95%;
+                }
+
+                /* Lista de opciones del manipulacion del dashboard */
+                .article_list{
+                    @include m.center-flex(column, center, start, .5vw, auto, 100%);
+                    padding: 2%;
+
+                    /* Lista de opciones de uso en el dashboard */
+                    .list_option{
+                        @include m.font-style(.9vw, none, none, none, left, none);
+                        color: map.get(v.$colors, "mediumGray");
+                    }
+                }
+
+                /* Nota importante de uso en la plataforma */
+                .article_h4{
+                    @include m.font-style(.9vw, none, none, none, left, none);
+                }
+            }   
+
+            /* Section de registro de prendas de la plataforma */
+            .section_register{ 
+                @include m.center-flex(none, center, center, none, 100%, 100%);
+                padding-left: 3vw;
+
+                .form_section{
+                    @include m.center-grid(65% 1fr, 1fr, 100%, 90%);
+                    margin-left: 4vw;
+                    gap: 30px;
+
+                    /* Contenedor a la izquierda del formulario de datos */
+                    .span_form{
+                        @include m.center-grid(1fr, 1fr 1fr 1fr 1fr 1fr 1fr, 100%, 100%);
+                        margin-left: -.5vw;
+
+                        /* Contenedor padre de los input de registro */
+                        .container_form{
+                            @include m.center-flex(none, center, end, none, 100%, 100%);
+                            padding: 1.2%;
+                        }
+
+                        /* Contenedor de la categoria de la prenda a registrar */
+                        .input_category{
+                            flex: 1;
+
+                          /* Input de seleccionar la categoria de la prenda */
+                          .select_category{
+                                @include m.center-flex(none, center, center, none, 70%, 100%);
+                                margin-bottom: 1.5%;
+                                padding-left: 1.5vw;
+                                outline: none;
+                                border: none;
+                                border-bottom: 1px solid map.get(v.$colors, "mediumGray");
+                                @include m.font-style(1.1vw, none, .5px, none, left, none);
+                                color: map.get(v.$colors, "mediumGray");
+
+                                /* Opciones del select de categorías */
+                                option {
+                                    background-color: map.get(v.$colors, "mediumGray");
+                                    color: map.get(v.$colors, "pureWhite");
+
+                                    &:hover {
+                                        background-color: map.get(v.$colors, "pureWhite");
+                                        color: map.get(v.$colors, "mediumGray");
+                                    }
+
+                                    &:focus {
+                                        outline: none; 
+                                    }
+                                }
+                            }
+                        }
+
+                        /* Contenedor de codigo y talla de la prenda a registrar */
+                        .input_auth{
+                            @include m.center-flex(row, center, center, 10px, 100%, 100%);
+
+                            /* Contenedor del codigo */
+                            .span_number{
+                                @include m.center-flex(column, center, start, none, 100%, 60%);
+
+                                /* Nombre del input */
+                                .label_number{
+                                    @include m.size(26%, 60%);
+                                    margin-left: .3vw;
+                                    @include m.font-style(.7vw, none, none, none, left, none);
+                                    color: map.get(v.$colors, "mediumGray");
+                                }
+
+                                /* Input del codigo */
+                                .input_number{
+                                    @include m.size(75%, 100%);
+                                    outline: none;
+                                    border: 1px solid  map.get(v.$colors, "mediumGray");
+                                    @include m.border-radius(4px);
+                                    @include m.font-style(1vw, bold, .5px, none, left, none);
+                                    padding: 3%;
+                                    color: map.get(v.$colors, "mediumGray");
+                                    text-transform: uppercase;   
+                                }
+                            }
+
+                            /* Contenedor de tallas */
+                            .span_size{
+                                @include m.size(100%, 38%);
+
+                                /* Input de tallas si no es de calzado */
+                                .size_input{
+                                    @include m.center-flex(row, space-evenly, center, none, 100%, 100%);
+                                    padding-top: 1.5vw;
+                                    padding-left: 1vw;
+                                    backface-visibility: hidden;
+                                    transform-style: preserve-3d;
+                                    animation: flipIn 0.5s ease forwards;
+
+                                    /* Boton de tallas */
+                                    .btn_size{
+                                        background-color: transparent;
+                                        color: map.get(v.$colors, "mediumGray");
+                                        border: 1px solid map.get(v.$colors, "mediumGray");
+                                        padding: 4%;
+                                        margin-right: .2vw;
+                                        @include m.border-radius(4px);
+                                        transition: .5s ease-in-out;
+                                        cursor: pointer;
+
+                                        /* Cuando la talla se active */
+                                        &.acti {
+                                            background-color: map.get(v.$colors, "mediumGray");
+                                            color: map.get(v.$colors, "pureWhite");
+                                            transform: rotate(-10deg);
+                                            border: none;
+                                        }
+                                    }
+                                }
+
+                                /* Input de tallas si si es de calzado */
+                                .size_select{
+                                    @include m.center-flex(none, center, end, none, 100%, 100%);
+
+                                    /* select para calzado */
+                                    .select_size{
+                                        @include m.center-flex(none, center, center, none, 80%, 90%);
+                                        padding-left: 1.5vw;
+                                        margin-top: .8vw;
+                                        outline: none;
+                                        border: none;
+                                        border-bottom: 1px solid map.get(v.$colors, "mediumGray");
+                                        @include m.font-style(1.1vw, none, .5px, none, left, none);
+                                        color: map.get(v.$colors, "mediumGray");
+                                        backface-visibility: hidden;
+                                        transform-style: preserve-3d;        
+                                        animation: flipIn 0.5s ease forwards;
+
+                                        /* Opciones del select de categorías */
+                                        option{
+                                            background-color: map.get(v.$colors, "mediumGray");
+                                            color: map.get(v.$colors, "pureWhite");
+        
+                                            &:hover {
+                                                background-color: map.get(v.$colors, "pureWhite");
+                                                color: map.get(v.$colors, "mediumGray");
+                                            }
+        
+                                            &:focus {
+                                                outline: none; 
+                                            }
+                                        }
+                                    }
+                                }
+
+                                /* Animacion para cambio de tallaje */
+                                @keyframes flipIn {
+                                    0% {
+                                      opacity: 0;
+                                      transform: rotateX(-90deg);
+                                    }
+                                    100% {
+                                      opacity: 1;
+                                      transform: rotateX(0deg);
+                                    }
+                                } 
+                            }
+                        }
+
+                        /* Contenedor del nombre de la prenda a registrar */
+                        .input_name{
+                            @include m.center-flex(row, center, center, none, 100%, 100%);
+
+                            /* Contenedor del nombre */
+                            .span_name{
+                                @include m.center-flex(column, center, start, none, 100%, 100%);
+
+                                /* Nombre del input */
+                                .label_name{
+                                    @include m.size(26%, 60%);
+                                    margin-left: .3vw;
+                                    @include m.font-style(.7vw, none, none, none, left, none);
+                                    color: map.get(v.$colors, "mediumGray");
+                                }
+
+                                /* Input del nombre */
+                                .input_name{
+                                    @include m.size(75%, 100%);
+                                    outline: none;
+                                    border: 1px solid  map.get(v.$colors, "mediumGray");
+                                    @include m.border-radius(4px);
+                                    @include m.font-style(1vw, bold, .5px, none, left, none);
+                                    padding: 3%;
+                                    color: map.get(v.$colors, "mediumGray");
+                                    text-transform: uppercase;   
+                                }
+                            }
+                        }
+                        
+                        /* Contenedor de la marca el precio y la cantidad de la prenda a registrar */
+                        .input_info{
+                            @include m.center-flex(row, center, center, 15px, 100%, 100%);
+                            
+                            /* Contenedor del marca */
+                            .span_brand{
+                                @include m.center-flex(column, center, start, none, 100%, 300%);
+
+                                /* Nombre del input */
+                                .label_brand{
+                                    @include m.size(26%, 60%);
+                                    margin-left: .3vw;
+                                    @include m.font-style(.7vw, none, none, none, left, none);
+                                    color: map.get(v.$colors, "mediumGray");
+                                }
+
+                                /* Input del marca */
+                                .input_brand{
+                                    @include m.size(75%, 100%);
+                                    outline: none;
+                                    border: 1px solid  map.get(v.$colors, "mediumGray");
+                                    @include m.border-radius(4px);
+                                    @include m.font-style(1vw, bold, .5px, none, left, none);
+                                    padding: 3%;
+                                    color: map.get(v.$colors, "mediumGray");
+                                    text-transform: uppercase;   
+                                }
+                            }
+
+                            /* Contenedor del precio */
+                            .span_price{
+                                @include m.center-flex(column, center, start, none, 100%, 200%);
+
+                                /* Nombre del input */
+                                .label_price{
+                                    @include m.size(26%, 60%);
+                                    margin-left: .3vw;
+                                    @include m.font-style(.7vw, none, none, none, left, none);
+                                    color: map.get(v.$colors, "mediumGray");
+                                }
+
+                                /* Input del precio */
+                                .input_price{
+                                    @include m.size(75%, 100%);
+                                    outline: none;
+                                    border: 1px solid  map.get(v.$colors, "mediumGray");
+                                    @include m.border-radius(4px);
+                                    @include m.font-style(1vw, bold, .5px, none, left, none);
+                                    padding: 3%;
+                                    color: map.get(v.$colors, "mediumGray");
+                                    text-transform: uppercase;   
+                                }
+                            }
+
+                            /* Contenedor del cantidad */
+                            .span_amount{
+                                @include m.center-flex(column, center, start, none, 100%, 100%);
+
+                                /* Nombre del input */
+                                .label_amount{
+                                    @include m.size(26%, 60%);
+                                    margin-left: .3vw;
+                                    @include m.font-style(.7vw, none, none, none, left, none);
+                                    color: map.get(v.$colors, "mediumGray");
+                                }
+
+                                /* Input del cantidad */
+                                .input_amount{
+                                    @include m.size(75%, 100%);
+                                    outline: none;
+                                    border: 1px solid  map.get(v.$colors, "mediumGray");
+                                    @include m.border-radius(4px);
+                                    @include m.font-style(1vw, bold, .5px, none, left, none);
+                                    padding: 3%;
+                                    color: map.get(v.$colors, "mediumGray");
+                                    text-transform: uppercase;   
+                                }
+                            }
+                        }
+
+                        /* Contenedor para subir la imagen  */
+                        .input_image{
+                            @include m.center-flex(row, center, center, none, 100%, 100%);
+                            margin-top: .5vw;
+
+                            /* Contenedor del input */
+                            .span_image{
+                                @include m.center-flex(column, center, start, none, 100%, 100%);
+
+                                /* Input file "OCULTO" */ 
+                                .input-file {
+                                    display: none; 
+                                }
+
+                                    .custom-label.acti {
+                                        background-color: map.get(v.$colors, "darkGray");
+                                        color: map.get(v.$colors, "pureWhite");
+                                    }
+                            
+                                    /* Input file convertido */
+                                    .custom-label {
+                                        display: inline-block;
+                                        @include m.center-flex(none, center, center, none, 100%, 100%);
+                                        @include m.size(90%, 100%);
+                                        @include m.border-radius(4px);
+                                        @include m.font-style(1.1vw, none, 1px, none, left, none);
+                                        cursor: pointer;
+                                        transition: background 0.3s;
+                                        background-color: transparent;
+                                        color: map.get(v.$colors, "darkGray");
+                                        border: 1px solid map.get(v.$colors, "darkGray");
+                                
+                                        &:hover {
+                                            background-color: map.get(v.$colors, "darkGray");
+                                            color: map.get(v.$colors, "pureWhite");
+                                        }
+                                    }
+                                }
+                        }
+
+                        /* Contenedor boton de registrar la prenda */
+                        .input_btn{
+                            @include m.center-flex(row, end, center, none, 100%, 100%);
+                            margin-top: .4vw;
+
+                            /* Contenedor del boton */
+                            .span_btn{
+                                @include m.center-flex(row, end, center, none, 100%, 50%);
+                                padding-right: .2vw;
+                            }
+
+                            /* boton de registro */
+                            .btn_post{
+                                padding: 7% 20%;
+                                background-color: map.get(v.$colors, "darkGray");
+                                color: map.get(v.$colors, "pureWhite");
+                                border: 1px solid map.get(v.$colors, "darkGray");
+                                transition: background 0.3s;
+                                cursor: pointer;
+                                @include m.border-radius(4px);
+                                @include m.font-style(.9vw, none, 1px, none, left, none);
+
+                                &:hover{
+                                    background-color: transparent;
+                                    color: map.get(v.$colors, "darkGray");
+                                    border: 1px solid map.get(v.$colors, "darkGray");
+                                }
+                            }
+                        }
+                    }
+                    
+                    /* Contenedor a la izquierda del formulario de imagenes */
+                    .figure_form{
+                        border: 1px solid black;
+                        background-color: map.get(v.$colors, "darkGray");
+                        @include m.center-flex(none, center, center, none, 100%, 100%);
+
+                        /* Imagen por defecto del formulario */
+                        .image_form{
+                            @include m.image-responsive(100%, 100%, cover);
+                            opacity: .6;
+                        }
+                    }
+                }
+            }
+
+            /* Seccion de pedidos de compras del comprador en la plataforma */
+            .section_products{
+                @include m.center-flex(column, center, center, none, 100%, 95%);
+                margin-left: 4vw;
+                
+                .container_table{
+                    @include m.size(100%, 100%);
+                    padding: 2%;
+                    overflow: hidden;
+                    position: relative;
+                
+                    .table_products {
+                        width: 100%;
+                        border-collapse: collapse;
+                        display: block;
+                        max-height: 80vh;
+                        overflow-y: auto;
+                        
+                        -ms-overflow-style: none;
+                        scrollbar-width: none;
+                        
+                        &::-webkit-scrollbar {
+                            display: none;
+                        }
+                
+                        thead, tbody {
+                            display: table;
+                            width: 100%;
+                            table-layout: auto;
+                        }
+                
+                        thead {
+                            position: sticky;
+                            top: 0;
+                            z-index: 10;
+                            background-color: #f4f4f4;
+                            
+                            tr th {
+                                @include m.spacing(0.9vw, 1.2vw);
+                                @include m.font-style(0.9vw, bold, uppercase, left, center, map.get(v.$colors, "dark-gray"));
+                                border-bottom: 2px solid map.get(v.$colors, "veryLightGray");
+                                text-transform: uppercase;
+                                
+                                /* Anchos personalizados para cada columna */
+                                &:nth-child(1) { width: 5%; } // ID
+                                &:nth-child(2) { width: 15%; } // Codigo Prenda
+                                &:nth-child(3) { width: 20%; min-width: 200px; } // Nombre
+                                &:nth-child(4) { width: 15%; } // Fecha de modulo
+                                &:nth-child(5) { width: 15%; } // Categoria de la prenda
+                                &:nth-child(6) { width: 13%; } // Modulo
+                                &:nth-child(7) { width: 15%; } // Acción
+                            }
+                        }
+                
+                        tbody {
+                            tr {
+                                &:nth-child(odd) {
+                                    background-color: map.get(v.$colors, "white");
+                                }
+                                &:nth-child(even) {
+                                    background-color: map.get(v.$colors, "veryLightGray");
+                                }
+                                
+                                td {
+
+                                    @include m.spacing(0.9vw, 1.2vw);
+                                    @include m.font-style(0.85vw, normal, none, left, center, map.get(v.$colors, "dark-gray"));
+                                    border-bottom: 1px solid map.get(v.$colors, "veryLightGray");
+    
+                                    
+                                    /* Asegura que el texto se muestre completo */
+                                    white-space: normal; /* Permite saltos de línea */
+                                    word-wrap: break-word; /* Rompe palabras largas si es necesario */
+                                    
+                                    /* Anchos deben coincidir con los th */
+                                    &:nth-child(1) { width: 5%; } // ID
+                                    &:nth-child(2) { width: 15%; } // Codigo Prenda
+                                    &:nth-child(3) { width: 20%; min-width: 200px; } // Nombre
+                                    &:nth-child(4) { width: 15%; } // Fecha de modulo
+                                    &:nth-child(5) { width: 15%; } // Categoria de la prenda
+                                    &:nth-child(6) { width: 13%; } // Modulo
+                                    &:nth-child(7) { width: 15%; } // Acción
+                                }
+                            }
+
+                            a{
+                                text-decoration: none;
+                                color: black;
+                            }
+    
+                            i{
+                                margin-left: .1vw;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+            }
+
+            /* Seccion de pedidos de compras del comprador en la plataforma */
+            .section_order{
+                @include m.center-flex(column, center, center, none, 100%, 95%);
+                margin-left: 4vw;
+      
+                .container_table{
+                    @include m.size(100%, 100%);
+                    padding: 2%;
+                    overflow: hidden;
+                    position: relative;
+                
+                    .table_order {
+                        width: 100%;
+                        border-collapse: collapse;
+                        display: block;
+                        max-height: 80vh;
+                        overflow-y: auto;
+                        
+                        -ms-overflow-style: none;
+                        scrollbar-width: none;
+                        
+                        &::-webkit-scrollbar {
+                            display: none;
+                        }
+                
+                        thead, tbody {
+                            display: table;
+                            width: 100%;
+                            table-layout: auto;
+                        }
+                
+                        thead {
+                            position: sticky;
+                            top: 0;
+                            z-index: 10;
+                            background-color: #f4f4f4;
+                            
+                            tr th {
+                                @include m.spacing(0.9vw, 1.2vw);
+                                @include m.font-style(0.9vw, bold, uppercase, left, center, map.get(v.$colors, "dark-gray"));
+                                border-bottom: 2px solid map.get(v.$colors, "veryLightGray");
+                                text-transform: uppercase;
+                                
+                                /* Anchos personalizados para cada columna */
+                                &:nth-child(1) { width: 5%; } // ID
+                                &:nth-child(2) { width: 10%; } // Codigo Prenda
+                                &:nth-child(3) { width: 20%; min-width: 200px; } // Nombre
+                                &:nth-child(4) { width: 21%; } // Fecha de modulo
+                                &:nth-child(5) { width: 10%; } // Categoria de la prenda
+                                &:nth-child(6) { width: 10%; } // Modulo
+                                &:nth-child(7) { width: 10%; } // Acción
+                            }
+                        }
+                
+                        tbody {
+                            tr {
+                                &:nth-child(odd) {
+                                    background-color: map.get(v.$colors, "white");
+                                }
+                                &:nth-child(even) {
+                                    background-color: map.get(v.$colors, "veryLightGray");
+                                }
+                                
+                                td {
+                                    @include m.spacing(0.9vw, 1.2vw);
+                                    @include m.font-style(0.85vw, normal, none, left, center, map.get(v.$colors, "dark-gray"));
+                                    border-bottom: 1px solid map.get(v.$colors, "veryLightGray");
+    
+                                    
+                                    /* Asegura que el texto se muestre completo */
+                                    white-space: normal; /* Permite saltos de línea */
+                                    word-wrap: break-word; /* Rompe palabras largas si es necesario */
+                                    
+                                    /* Anchos deben coincidir con los th */
+                                    &:nth-child(1) { width: 5%; } // ID
+                                    &:nth-child(2) { width: 10%; } // Codigo Prenda
+                                    &:nth-child(3) { width: 20%; min-width: 200px; } // Nombre
+                                    &:nth-child(4) { width: 21%; } // Fecha de modulo
+                                    &:nth-child(5) { width: 10%; } // Categoria de la prenda
+                                    &:nth-child(6) { width: 10%; } // Modulo
+                                    &:nth-child(7) { width: 10%; } // Acción
+                                }
+                            }
+    
+                            i{
+                                margin-left: .3vw;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+            }
+
+            /* Seccion de historial de pasos del vendedor en la plataforma  */
+            .section_history{
+                @include m.center-flex(column, center, center, none, 100%, 95%);
+                margin-left: 4vw;
+
+                .container_table{
+                    @include m.size(100%, 100%);
+                    padding: 2%;
+                    overflow: hidden;
+                    position: relative;
+                
+                    .table_history {
+                        width: 100%;
+                        border-collapse: collapse;
+                        display: block;
+                        max-height: 80vh;
+                        overflow-y: auto;
+                        
+                        -ms-overflow-style: none;
+                        scrollbar-width: none;
+                        
+                        &::-webkit-scrollbar {
+                            display: none;
+                        }
+                
+                        thead, tbody {
+                            display: table;
+                            width: 100%;
+                            table-layout: auto;
+                        }
+                
+                        thead {
+                            position: sticky;
+                            top: 0;
+                            z-index: 10;
+                            background-color: #f4f4f4;
+                            
+                            tr th {
+                                @include m.spacing(0.9vw, 1.2vw);
+                                @include m.font-style(0.9vw, bold, uppercase, left, center, map.get(v.$colors, "dark-gray"));
+                                border-bottom: 2px solid map.get(v.$colors, "veryLightGray");
+                                text-transform: uppercase;
+                                
+                                /* Anchos personalizados para cada columna */
+                                &:nth-child(1) { width: 5%; } // ID
+                                &:nth-child(2) { width: 20%; } // Codigo Prenda
+                                &:nth-child(3) { width: 20%; min-width: 200px; } // Nombre
+                                &:nth-child(4) { width: 21%; } // Fecha de modulo
+                                &:nth-child(5) { width: 10%; } // Categoria de la prenda
+                                &:nth-child(6) { width: 10%; } // Modulo
+                                &:nth-child(7) { width: 10%; } // Acción
+                            }
+                        }
+                
+                        tbody {
+                            tr {
+                                &:nth-child(odd) {
+                                    background-color: map.get(v.$colors, "white");
+                                }
+                                &:nth-child(even) {
+                                    background-color: map.get(v.$colors, "veryLightGray");
+                                }
+                                
+                                td {
+                                    @include m.spacing(0.9vw, 1.2vw);
+                                    @include m.font-style(0.85vw, normal, none, left, center, map.get(v.$colors, "dark-gray"));
+                                    border-bottom: 1px solid map.get(v.$colors, "veryLightGray");
+    
+                                    
+                                    /* Asegura que el texto se muestre completo */
+                                    white-space: normal; /* Permite saltos de línea */
+                                    word-wrap: break-word; /* Rompe palabras largas si es necesario */
+                                    
+                                    /* Anchos deben coincidir con los th */
+                                    &:nth-child(1) { width: 5%; } // ID
+                                    &:nth-child(2) { width: 20%; } // Codigo Prenda
+                                    &:nth-child(3) { width: 20%; min-width: 200px; } // Nombre
+                                    &:nth-child(4) { width: 21%; } // Fecha de modulo
+                                    &:nth-child(5) { width: 10%; } // Categoria de la prenda
+                                    &:nth-child(6) { width: 10%; } // Modulo
+                                    &:nth-child(7) { width: 10%; } // Acción
+                                }
+                            }
+    
+                            i{
+                                margin-left: .3vw;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+            }
+
+            /* Section de configuracion de cuenta del vendedor en la plataforma */
+            .section_account{
+                position: absolute;
+                background-color: map.get(v.$colors, "veryLightGray");
+                @include m.center-flex(column, space-evenly, center, 30px, 100%, 25%);
+                @include m.position-absolute(0%, none, 0%, none);
+                box-shadow: 40px 40px 10px map.get(v.$colors, "middleGray");
+
+    
+                .form_account{
+                    @include m.center-flex(column, center, center, none, 100%, 100%);
+                    @include m.box-shadow(0px, 5px, 10px, map.get(v.$colors, "medium-gray"));
+    
+    
+                    .figure_account {
+                        position: relative; 
+                        @include m.center-flex(column, center, center, 0, 35%, 100%);
+                        overflow: hidden;
+                        background-color: map.get(v.$colors, "darkGray");
+                        transition: all 0.3s ease;
+                        cursor: pointer;
+                    
+                        &:hover {                
+                            .camera_icon {
+                                background-color: map.get(v.$colors, "middleGray");
+                                transform: scale(1.05);
+                            }
+                        }
+                    
+                        .image_account {
+                            @include m.size(7vw, 7vw);
+                            @include m.border-radius(100%);
+                            object-fit: cover;
+                            border: 5px solid map.get(v.$colors, "white");
+                            transition: all 0.3s ease;
+                        }
+                    
+                        .camera_icon {
+                            position: absolute;
+                            @include m.position-absolute(60%, 55%, none, none);
+                            background-color: map.get(v.$colors, "veryLightGray");
+                            color: map.get(v.$colors, "darkGray");
+                            padding: .5vw;
+                            border-radius: 100%;
+                            cursor: pointer;
+                            font-size: 1rem;
+                            @include m.transition(all, 0.3s, ease);
+                            @include m.center-flex(row, center, center, 0, 11%, 7.6%);
+                    
+                            &:hover {
+                                background-color: map.get(v.$colors, "primary-dark");
+                                transform: scale(1.001);
+                            }
+                        }
+                    
+                        // Esconde el input file pero mantiene accesible
+                        input[type="file"] {
+                            position: absolute;
+                            width: 10%;
+                            height: 100%;
+                            opacity: 0;
+                            cursor: pointer;
+                            z-index: 3;
+                        }
+                    }
+    
+                    .span_account{
+                        @include m.center-flex(column, space-evenly, center, none, 65%, 100%);
+    
+                        .input_update {
+                            @include m.center-flex(none, center, center, none, 9%, 65%);
+                            border: 1px solid map.get(v.$colors, "bluesuave");
+                            position: relative;
+                        
+                            .label_post {
+                                position: absolute;
+                                width: 100%;
+                                @include m.position-absolute(none, none, 22%, 60%);
+                                pointer-events: none;
+                                color:  map.get(v.$colors, "bluesuave");
+                                @include m.font-style(.7vw, none, none, left, center, none);
+                            }
+                        
+                            .input_post {
+                                position: relative;
+                                @include m.size(100%, 100%);
+                                border: none;
+                                outline: none;
+                                background: transparent;
+                                padding-top: 1vw;
+                                padding-left: .5vw;
+                                padding-right: .6vw;
+                                color: map.get(v.$colors, "medium-gray"); 
+    
+                                @include m.font-style(.8vw, none, none, left, left, none);
+    
+                                
+                                &::placeholder {
+                                    color: map.get(v.$colors, "medium-gray"); 
+                                    @include m.font-style(.8vw, none, none, left, left, none);
+    
+                                }
+                            }
+    
+                            i{
+                                padding-right: 1vw;
+                                padding-top: .6vw;
+                                font-size: .9vw;
+                                cursor: pointer;
+                            }
+                        }
+    
+                        #btn_update{
+                            @include m.center-flex(none, center, center, none, 10%, 45%);
+                            border: none;
+                            
+                            .btn_update{
+                                @include m.size(100%, 100%);
+                                border: none;
+                                border-color: transparent;
+                                color: map.get(v.$colors, "veryLightGray"); 
+                                background-color: map.get(v.$colors, "darkGray");
+                                @include m.font-style(.8vw, none, none, left, center, none);
+                                cursor: pointer;
+                                @include m.border-radius(4px); 
+                                transition: .2s ease-in-out;
+    
+                                &:hover{
+                                    border: 1px solid map.get(v.$colors, "darkGray");
+                                    background-color: transparent;
+                                    color: map.get(v.$colors, "darkGray"); 
+    
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
