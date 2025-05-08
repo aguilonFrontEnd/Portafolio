@@ -1,0 +1,14 @@
+@use "sass:map";
+@use '/resources/scss/abstracts/mixin' as m;
+@use '/resources/scss/abstracts/variables' as v;
+
+
+*{
+    @include m.spacing(0%, 0%); 
+    box-sizing: border-box;
+}
+
+.nav_category{
+    background-color: map.get(v.$colors, "veryLightGray");
+    @include m.center-flex(none, center, end, none, 100%, 100%);
+}

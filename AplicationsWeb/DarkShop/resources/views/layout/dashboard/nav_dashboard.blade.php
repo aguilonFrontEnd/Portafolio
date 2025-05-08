@@ -34,8 +34,10 @@
 
         <!-- Opción 8: CERRAR SESIÓN -->
         <li class="item_nav">
-            <button class="btn_nav">CERRAR SESIÓN</button>
+            <form action="{{ url('/dashboard/logout') }}" method="POST">
+                @csrf
+                <button type="submit" class="btn_nav" onclick="event.stopPropagation();">CERRAR SESIÓN</button>
+            </form>
         </li>
     </ul>
 </nav>
-

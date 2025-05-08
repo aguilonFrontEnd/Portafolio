@@ -1,149 +1,123 @@
 /* DASHBOARD VENDEDOR */
 
-// LOGICA PARA EL MENU DE NAVEGACIÓN LAS SECCIONES DEL DASHBOARD
+// LÓGICA DEL MENÚ DE NAVEGACIÓN
 document.addEventListener('DOMContentLoaded', function () {
-    
-    // Mostramos la sección por defecto al cargar la página
     const defaultSection = document.querySelector('.section_default');
     if (defaultSection) {
         defaultSection.style.display = 'block';
     }
 
-    // Obtenemos todos los botones del menú
     const navButtons = document.querySelectorAll('.btn_nav');
 
-    // Recorremos cada botón
     navButtons.forEach(button => {
         button.addEventListener('click', function () {
             const id = this.id;
 
-            // Ocultamos todas las secciones
             document.querySelectorAll('.section').forEach(section => {
                 section.style.display = 'none';
             });
 
-            // Mostramos la sección correspondiente al botón presionado
             switch (id) {
-
                 case 'add':
                     document.querySelector('.section_register').style.display = 'block';
                     break;
                 case 'productos':
                     document.querySelector('.section_products').style.display = 'block';
                     break;
-                case 'pedidos': // Mostrar pedidos = sección .section_order
+                case 'pedidos':
                     document.querySelector('.section_order').style.display = 'block';
                     break;
-                case 'historial': // Mostrar historial = sección .section_history
+                case 'historial':
                     document.querySelector('.section_history').style.display = 'block';
                     break;
-                case 'cuenta': // Mostrar cuenta
+                case 'cuenta':
                     document.querySelector('.section_account').style.display = 'block';
-                    break;
-                case 'cerrar':
-                    alert('Cerrando sesión...');
                     break;
                 default:
                     console.log('ID de sección no reconocido:', id);
-            }     
+            }
         });
     });
 });
 
-// LOGICA DEL BOTON DE TALLAS DE LA SECCION DE REGISTRO DE PRENDAS
+// LÓGICA DE BOTONES DE TALLAS
 document.addEventListener('DOMContentLoaded', function () {
     const sizeButtons = document.querySelectorAll('.btn_size');
 
     sizeButtons.forEach(button => {
         button.addEventListener('click', function () {
-            // Quitar clase 'acti' de todos
             sizeButtons.forEach(btn => btn.classList.remove('acti'));
-
-            // Activar solo el clicado
             this.classList.add('acti');
-
-            // (Opcional) Guardar el value seleccionado en una variable
             const selectedSize = this.value;
             console.log('Talla seleccionada:', selectedSize);
         });
     });
 });
 
-// LOGICA DEL BOTON DE TALLAS DE LA SECCION DE REGISTRO DE PRENDAS
+// VISTA PREVIA DE IMAGEN EN REGISTRO DE PRENDAS
 document.addEventListener('DOMContentLoaded', function () {
-    const sizeButtons = document.querySelectorAll('.btn_size');
-
-    sizeButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            // Quitar clase 'acti' de todos
-            sizeButtons.forEach(btn => btn.classList.remove('acti'));
-
-            // Activar solo el clicado
-            this.classList.add('acti');
-
-            // (Opcional) Guardar el value seleccionado en una variable
-            const selectedSize = this.value;
-            console.log('Talla seleccionada:', selectedSize);
-        });
-    });
-});
-
-// LOGICA DE LA IMAGEN A INSERTAR EN EL REGISTRO DE LAS PRENDAS 
-document.getElementById('fileInput').addEventListener('change', function (e) {
-    const file = e.target.files[0];
+    const fileInput = document.getElementById('fileInput');
     const label = document.querySelector('.custom-label');
     const previewImg = document.querySelector('.image_form');
 
-    if (file && ['image/jpeg', 'image/png', 'image/jpg'].includes(file.type)) {
-        // Agregar la clase 'acti' al label
-        label.classList.add('acti');
-
-        // Leer y mostrar imagen
-        const reader = new FileReader();
-        reader.onload = function (event) {
-            previewImg.src = event.target.result;
-        };
-        reader.readAsDataURL(file);
+    if (fileInput) {
+        fileInput.addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (file && ['image/jpeg', 'image/png', 'image/jpg'].includes(file.type)) {
+                label.classList.add('acti');
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    previewImg.src = event.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
     }
 });
 
-/* LOGICA PARA LAS TALLAS */
-document.getElementById('tallaSelect').addEventListener('change', function() {
-    const optgroup = this.options[this.selectedIndex].parentElement;
-    document.getElementById('tipoTalla').value = optgroup.label;
-});
+// VISTA PREVIA DE FOTO DE PERFIL
+document.addEventListener('DOMContentLoaded', function () {
+    const fileInput = document.getElementById('file-input');
+    const profilePreview = document.getElementById('profile-preview');
 
-// LOGICA PARA LA VISTA PREVIA DE LA IMAGEN
-document.getElementById('file-input').addEventListener('change', function(e) {
-    const reader = new FileReader();
-    reader.onload = function(event) {
-        document.getElementById('profile-preview').src = event.target.result;
+    if (fileInput && profilePreview) {
+        fileInput.addEventListener('change', function (e) {
+            const reader = new FileReader();
+            reader.onload = function (event) {
+                profilePreview.src = event.target.result;
+            };
+            reader.readAsDataURL(e.target.files[0]);
+        });
     }
-    reader.readAsDataURL(e.target.files[0]);
 });
 
-// LOGICA DE TALLAS
-document.addEventListener('DOMContentLoaded', function() {
+// ACTUALIZAR TIPO DE TALLA AUTOMÁTICAMENTE EN EL REGISTRO
+document.addEventListener('DOMContentLoaded', function () {
     const tallaSelect = document.getElementById('tallaSelect');
     const tipoTallaInput = document.getElementById('tipoTalla');
-    
-    // Actualizar tipo_talla cuando se selecciona una talla
-    tallaSelect.addEventListener('change', function() {
-        const optgroup = this.options[this.selectedIndex].parentElement;
-        if (optgroup.tagName === 'OPTGROUP') {
-            tipoTallaInput.value = optgroup.label.toLowerCase();
-        }
-    });
-    
-    // Validar antes de enviar
-    document.querySelector('form').addEventListener('submit', function(e) {
-        if (!tallaSelect.value || !tipoTallaInput.value) {
-            e.preventDefault();
-            alert('Por favor selecciona una talla válida');
-        }
-    });
+
+    if (tallaSelect && tipoTallaInput) {
+        tallaSelect.addEventListener('change', function () {
+            const optgroup = this.options[this.selectedIndex].parentElement;
+            if (optgroup.tagName === 'OPTGROUP') {
+                tipoTallaInput.value = optgroup.label.toLowerCase();
+            }
+        });
+    }
 });
 
+// ✅ VALIDACIÓN SOLO PARA FORMULARIO DE REGISTRO DE ROPA
+document.addEventListener('DOMContentLoaded', function () {
+    const registerForm = document.getElementById('form_register_clothes');
+    const tallaSelect = document.getElementById('tallaSelect');
+    const tipoTallaInput = document.getElementById('tipoTalla');
 
-
-
+    if (registerForm && tallaSelect && tipoTallaInput) {
+        registerForm.addEventListener('submit', function (e) {
+            if (!tallaSelect.value || !tipoTallaInput.value) {
+                e.preventDefault();
+                alert('Por favor selecciona una talla válida');
+            }
+        });
+    }
+});

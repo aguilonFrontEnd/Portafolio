@@ -8,6 +8,12 @@
 @use 'scss/layout/dashboard/header_dashboard' as header;
 @use 'scss/layout/dashboard/nav_dashboard' as nav;
 
+@use 'scss/layout/index/header_index' as header;
+@use 'scss/layout/index/nav_index' as nav;
+
+@use 'scss/layout/categories/header_category' as header;
+@use 'scss/layout/index/nav_category' as nav;
+
 @use 'scss/layout/index/banner_index' as banner;
 @use 'scss/layout/index/header_index' as header;
 @use 'scss/layout/index/carrusel_index' as carrusel;
@@ -19,9 +25,20 @@
 
 // 4 Dasboard (Buyer, vendor)
 @use 'scss/roles/vendor/vendor_dashboard' as vendor;
+@use 'scss/roles/buyer/buyer_dashboard' as buyer;
 
 // 5 Vista de prenda de modificacion y eliminación de la prenda (Vendor)
 @use 'scss/form/show_clothes' as form;
+
+// 6 Index Principales (Buyer, vendor)
+@use 'scss/roles/buyer/buyer_index' as buyer;
+@use 'scss/roles/vendor/vendor_index' as vendor;
+
+
+
+// 7 Categorias (Camisetas, camisas, pantalones, zapatos, zapatillas, gorras, pantalones cortos) 
+@use 'scss/roles/buyer/buyer_category' as buyer;
+@use 'scss/roles/vendor/categories/vendor_category' as vendor;
 
 
 

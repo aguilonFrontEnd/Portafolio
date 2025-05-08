@@ -1,54 +1,55 @@
 <?php
 
-use App\Http\Controllers\returnViews;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\dashboard;
 use App\Http\Controllers\Clothes\showClothes;
 use App\Http\Controllers\Auth\startSesion;
-use App\Http\Controllers\Index\index;
+use App\Http\Controllers\Index\indexVendor;
+use App\Http\Controllers\Index\indexBuyer;
+use App\Http\Controllers\Categories\category;
 
-//  RUTAS DE ACCESO A LOS DASHBOARD DE LOS ROLES EN LA DARKSHOP
-Route::prefix('dashboard')->group(function() {
-
-    // Vendedor
-    Route::get('/vendor', [Dashboard::class, 'dashboardVendor'])->name('vendor.dashboard');
-    Route::post('/vendor/register-clothes', [Dashboard::class, 'registerClothes'])->name('vendor.registerClothes');
-    
-    // Configuración de cuenta
-    Route::get('/vendor/account', [Dashboard::class, 'showAccountForm'])->name('vendor.account');
-    Route::put('/vendor/account/update', [Dashboard::class, 'updateAccount'])->name('vendor.account.update');
-
-        Route::prefix('show')->group(function() {
-
-            // Modificacion y edicion del producto
-            Route::get('/show/prendas/{id}', [showClothes::class, 'show'])->name('productos.show');
-            Route::put('/productos/{id}', [showClothes::class, 'update'])->name('productos.update');
-            Route::delete('/productos/{id}', [showClothes::class, 'destroy'])->name('productos.destroy');
-        });
-
-        
-        Route::prefix('index')->group(function() {
-
-            // Index del vendedor donde podra ver el contenido que tiene registrado
-            Route::get('vendor/{id}', [index::class, 'indexVendor'])->name('vendor.index');        
-        });
-
-    /* -------------------------------------------------------------------------------------------------------------------- */
-
-    // Comprador
-    Route::get('/buyer', [Dashboard::class, 'dashboardBuyer'])->name('buyer.dashboard');
-});
-
-// RUTAS DE ACCESO A LOS DASHBOARD DE LOS ROLES EN LA DARKSHOP
+// RUTAS PÚBLICAS (login/register)
 Route::prefix('sesion')->group(function() {
-
-    // Login de los usuarios
-    Route::get('/login', [startSesion::class, 'loginUsers'])->name('login');
+    Route::get('/login', [startSesion::class, 'loginUsers'])->name('sesion.login');
     Route::post('/logueo_post', [startSesion::class, 'logueo'])->name('loginUser');
-
-    // Register de los usuarios
     Route::get('/register', [startSesion::class, 'registerUsers'])->name('register');
     Route::post('/register_post', [startSesion::class, 'register'])->name('registerUser');
 });
 
+// RUTAS PRIVADAS (requieren estar logueado, pero sin middleware)
+Route::prefix('dashboard')->group(function() {
+    // RUTAS VENDEDOR
+    Route::prefix('vendor')->group(function() {
+        Route::get('/', [dashboard::class, 'dashboardVendor'])->name('vendor.dashboard');
+        Route::post('/register-clothes', [dashboard::class, 'registerClothes'])->name('vendor.registerClothes');
+        Route::get('/account', [dashboard::class, 'showAccountForm'])->name('vendor.account');
+        Route::put('/account/update', [dashboard::class, 'updateAccount'])->name('vendor.account.update');
+        
+        // Productos del vendedor
+        Route::get('/prendas/{id}', [showClothes::class, 'show'])->name('productos.show');
+        Route::put('/productos/{id}', [showClothes::class, 'update'])->name('productos.update');
+        Route::delete('/productos/{id}', [showClothes::class, 'destroy'])->name('productos.destroy');
+        
+        // Index del vendedor
+        Route::get('/index/{id}', [indexVendor::class, 'indexVendor'])->name('vendor.index');
+    });
+    Route::get('/categoriasVendor/{categoria}', [category::class, 'showCategoriesVendor'])->name('categorias.show');
 
+
+    // RUTAS COMPRADOR
+    Route::prefix('buyer')->group(function() {
+        Route::get('/', [dashboard::class, 'dashboardBuyer'])->name('buyer.dashboard');
+        Route::get('/index', [indexBuyer::class, 'indexBuyer'])->name('buyer.index');
+    });
+
+    Route::get('/categoriasBuyer/{categoria}', [category::class, 'showCategoriesBuyer'])->name('categorias.show');
+
+    // Cerrar sesión (compartido)
+    Route::post('/logout', function () {
+        Auth::logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+        return redirect()->route('sesion.login');
+    })->name('logout');
+});

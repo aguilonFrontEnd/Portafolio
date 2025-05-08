@@ -1,0 +1,16 @@
+@use "sass:map";
+@use '/resources/scss/abstracts/mixin' as m;
+@use '/resources/scss/abstracts/variables' as v;
+
+
+*{
+    @include m.spacing(0%, 0%); 
+    box-sizing: border-box;
+}
+
+.header_category{
+    border: 1px solid black;
+    @include m.center-flex(none, center, center, none, 75%, 100%);
+    background-color: map.get(v.$colors, "charcoalBlack");
+
+}

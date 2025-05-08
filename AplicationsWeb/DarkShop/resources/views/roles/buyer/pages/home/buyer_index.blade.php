@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    @vite(['resources/scss/roles/vendor/vendor_index.scss'])
+    @vite(['resources/scss/roles/buyer/buyer_index.scss'])
     @vite('resources/js/pages/index.js')
 
     {{-- Link de fontAwesone para iconos  --}}
@@ -99,36 +99,12 @@
         </figure>
 
         <main class="main_category">
-
-            <article class="article_category">
-                <h4 class="article_h5">Gorras</h5>
-                <button type="button" class="article_btn">Ver más</button>
-            </article>
-            
-            
-            <article class="article_category">
-                <h4 class="article_h5">Camisetas</h5>
-                <button type="button" class="article_btn">Ver más</button>
-            </article>
-
-            
-            <article class="article_category">
-                <h4 class="article_h5">Chaquetas</h5>
-                <button type="button" class="article_btn">Ver más</button>
-            </article>
-
-            
-            <article class="article_category">
-                <h4 class="article_h5">Pantalones</h5>
-                <button type="button" class="article_btn">Ver más</button>
-            </article>
-
-            
-            <article class="article_category">
-                <h4 class="article_h5">Zapatos</h5>
-                <button type="button" class="article_btn">Ver más</button>
-            </article>
-
+            @foreach($categorias as $categoria)
+                <article class="article_category">
+                    <h4 class="article_h5">{{ $categoria->nombre }}</h4>
+                    <a href="{{ route('categorias.show', $categoria->nombre) }}" class="article_btn"> Ver más </a>
+                </article>
+            @endforeach
         </main>
 
         <span class="container_category">

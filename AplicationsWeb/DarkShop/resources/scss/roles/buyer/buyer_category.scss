@@ -1,0 +1,55 @@
+@use "sass:map";
+@use '/resources/scss/abstracts/mixin' as m;
+@use '/resources/scss/abstracts/variables' as v;
+
+* {
+    @include m.spacing(0%, 0%);
+    box-sizing: border-box;
+}
+
+body {
+    @include m.center-grid(25% 1fr, 20vh 80vh, 100vh, 100vw);
+    grid-template-areas:
+        "headerCategory headerCategory"
+        "navCategory mainCategory";
+
+    .container_header {
+        border: 1px solid black;
+        grid-area: headerCategory;
+        @include m.center-flex(none, center, end, none, 100%, 100vw);
+    }
+
+    .container_nav {
+        grid-area: navCategory;
+        @include m.size(100%, 100%);
+        box-shadow: 35px 0 5px map.get(v.$colors, "middleGray");
+    }
+
+    .main_categories {
+        grid-area: mainCategory;
+        @include m.size(100%, 100%);
+        padding: 2%;
+        padding-left: 6%;
+
+        .figure_categories {
+            @include m.center-flex(row, start, start, 1vw, 100%, 100%);
+            flex-wrap: wrap;
+            flex: 0 0 auto;
+            overflow-y: scroll;
+                    
+            scrollbar-width: none;      
+            -ms-overflow-style: none;    
+
+            &::-webkit-scrollbar {
+                display: none;          
+            }
+
+            .article_categories {
+                border: 1px solid black;
+                @include m.center-grid(25% 1fr, 20% 1fr, 75%, 16.5vw);
+                min-width: 14vw;
+                flex-shrink: 0;
+            }
+        }
+    }
+}

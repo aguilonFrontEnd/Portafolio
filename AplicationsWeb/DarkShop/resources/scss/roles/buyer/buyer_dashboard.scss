@@ -1,0 +1,247 @@
+@use "sass:map";
+@use '/resources/scss/abstracts/mixin' as m;
+@use '/resources/scss/abstracts/variables' as v;
+
+
+*{
+    @include m.spacing(0%, 0%); 
+    box-sizing: border-box;
+
+    body{
+        @include m.center-grid(20% 1fr, 25% 1fr, 100vh, 100vw);
+        grid-template-areas: 
+        "headerDashboad headerDashboad"
+        "navDashboard mainDashboard";
+
+        /* CONTENEDOR DEL ENCABEZADO DEL DASHBOARD DEL VENDEDOR */
+        .container_header{
+            grid-area: headerDashboad;
+            @include m.size(100%, 100vw);
+            overflow: hidden;
+        }
+
+        /* CONTENEDOR DEL MENU DE NAVEGACION DEL DASHBOARD DEL VENDEDOR */
+        .container_nav{
+            grid-area: navDashboard;
+            @include m.size(100%, 100%);
+            box-shadow: 40px 0 10px map.get(v.$colors, "middleGray");
+        }
+
+        /* CONTENEDOR DE LAS SECCIONES A INTERACTUAR POR EL VENDEDOR */
+        .container_main{
+            grid-area: mainDashboard;
+            @include m.size(100%, 100%);
+            padding: 1%;
+
+            /* Contenedor padre de las secciones de interaccion del vendedor */
+            .section{
+                @include m.size(100%, 100%);
+                display: none;
+            }
+
+            /* Section por defecto al cargar la pagina en la plataforma */
+            .section_default{
+                @include m.center-flex(column, center, center, 1vw, 115%, 100%);
+                padding: 8%;
+
+                /* Titulo de introduction */
+                .article_h2{
+                    @include m.font-style(2.4vw, bold, .5px, none, left, none);
+                }
+
+                /* Descripcion del dashboard */
+                .article_p{
+                    @include m.font-style(.9vw, none, none, none, left, none);
+                    color: map.get(v.$colors, "mediumGray");
+                    width: 95%;
+                }
+
+                /* Lista de opciones del manipulacion del dashboard */
+                .article_list{
+                    @include m.center-flex(column, center, start, .5vw, auto, 100%);
+                    padding: 2%;
+
+                    /* Lista de opciones de uso en el dashboard */
+                    .list_option{
+                        @include m.font-style(.9vw, none, none, none, left, none);
+                        color: map.get(v.$colors, "mediumGray");
+                    }
+                }
+
+                /* Nota importante de uso en la plataforma */
+                .article_h4{
+                    @include m.font-style(.9vw, none, none, none, left, none);
+                }
+            }   
+
+            /* Section de registro de prendas de la plataforma */
+            .section_register{ 
+                @include m.center-flex(none, center, center, none, 100%, 100%);
+                padding-left: 3vw;
+
+            }
+
+            /* Seccion de pedidos de compras del comprador en la plataforma */
+            .section_products{
+                @include m.center-flex(column, center, center, none, 100%, 95%);
+                margin-left: 4vw;
+                
+              
+            }
+
+            /* Seccion de pedidos de compras del comprador en la plataforma */
+            .section_order{
+                @include m.center-flex(column, center, center, none, 100%, 95%);
+                margin-left: 4vw;
+      
+            }
+
+            /* Seccion de historial de pasos del vendedor en la plataforma  */
+            .section_history{
+                @include m.center-flex(column, center, center, none, 100%, 95%);
+                margin-left: 4vw;
+
+           
+            }
+
+            /* Section de configuracion de cuenta del vendedor en la plataforma */
+            .section_account{
+                position: absolute;
+                background-color: map.get(v.$colors, "veryLightGray");
+                @include m.center-flex(column, space-evenly, center, 30px, 100%, 25%);
+                @include m.position-absolute(0%, none, 0%, none);
+                box-shadow: 40px 40px 10px map.get(v.$colors, "middleGray");
+
+    
+                .form_account{
+                    @include m.center-flex(column, center, center, none, 100%, 100%);
+                    @include m.box-shadow(0px, 5px, 10px, map.get(v.$colors, "medium-gray"));
+    
+    
+                    .figure_account {
+                        position: relative; 
+                        @include m.center-flex(column, center, center, 0, 35%, 100%);
+                        overflow: hidden;
+                        background-color: map.get(v.$colors, "darkGray");
+                        transition: all 0.3s ease;
+                        cursor: pointer;
+                    
+                        &:hover {                
+                            .camera_icon {
+                                background-color: map.get(v.$colors, "middleGray");
+                                transform: scale(1.05);
+                            }
+                        }
+                    
+                        .image_account {
+                            @include m.size(7vw, 7vw);
+                            @include m.border-radius(100%);
+                            object-fit: cover;
+                            border: 5px solid map.get(v.$colors, "white");
+                            transition: all 0.3s ease;
+                        }
+                    
+                        .camera_icon {
+                            position: absolute;
+                            @include m.position-absolute(60%, 55%, none, none);
+                            background-color: map.get(v.$colors, "veryLightGray");
+                            color: map.get(v.$colors, "darkGray");
+                            padding: .5vw;
+                            border-radius: 100%;
+                            cursor: pointer;
+                            font-size: 1rem;
+                            @include m.transition(all, 0.3s, ease);
+                            @include m.center-flex(row, center, center, 0, 11%, 7.6%);
+                    
+                            &:hover {
+                                background-color: map.get(v.$colors, "primary-dark");
+                                transform: scale(1.001);
+                            }
+                        }
+                    
+                        // Esconde el input file pero mantiene accesible
+                        input[type="file"] {
+                            position: absolute;
+                            width: 10%;
+                            height: 100%;
+                            opacity: 0;
+                            cursor: pointer;
+                            z-index: 3;
+                        }
+                    }
+    
+                    .span_account{
+                        @include m.center-flex(column, space-evenly, center, none, 65%, 100%);
+    
+                        .input_update {
+                            @include m.center-flex(none, center, center, none, 9%, 65%);
+                            border: 1px solid map.get(v.$colors, "bluesuave");
+                            position: relative;
+                        
+                            .label_post {
+                                position: absolute;
+                                width: 100%;
+                                @include m.position-absolute(none, none, 22%, 60%);
+                                pointer-events: none;
+                                color:  map.get(v.$colors, "bluesuave");
+                                @include m.font-style(.7vw, none, none, left, center, none);
+                            }
+                        
+                            .input_post {
+                                position: relative;
+                                @include m.size(100%, 100%);
+                                border: none;
+                                outline: none;
+                                background: transparent;
+                                padding-top: 1vw;
+                                padding-left: .5vw;
+                                padding-right: .6vw;
+                                color: map.get(v.$colors, "medium-gray"); 
+    
+                                @include m.font-style(.8vw, none, none, left, left, none);
+    
+                                
+                                &::placeholder {
+                                    color: map.get(v.$colors, "medium-gray"); 
+                                    @include m.font-style(.8vw, none, none, left, left, none);
+    
+                                }
+                            }
+    
+                            i{
+                                padding-right: 1vw;
+                                padding-top: .6vw;
+                                font-size: .9vw;
+                                cursor: pointer;
+                            }
+                        }
+    
+                        #btn_update{
+                            @include m.center-flex(none, center, center, none, 10%, 45%);
+                            border: none;
+                            
+                            .btn_update{
+                                @include m.size(100%, 100%);
+                                border: none;
+                                border-color: transparent;
+                                color: map.get(v.$colors, "veryLightGray"); 
+                                background-color: map.get(v.$colors, "darkGray");
+                                @include m.font-style(.8vw, none, none, left, center, none);
+                                cursor: pointer;
+                                @include m.border-radius(4px); 
+                                transition: .2s ease-in-out;
+    
+                                &:hover{
+                                    border: 1px solid map.get(v.$colors, "darkGray");
+                                    background-color: transparent;
+                                    color: map.get(v.$colors, "darkGray"); 
+    
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

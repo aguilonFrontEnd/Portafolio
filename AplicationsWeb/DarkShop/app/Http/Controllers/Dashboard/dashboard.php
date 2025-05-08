@@ -5,31 +5,35 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
 use Exception;
 use App\Models\Categoria;
 use App\Models\Productos;
-use App\Models\Talla;
-use App\Models\Usuario;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class Dashboard extends Controller
 {
-    // DashBoard de control de los Vendedores 
-    public function dashboardVendor() {
-        $user = Auth::user(); 
+
+    public function dashboardVendor()
+    {
+
+        $usuario = Auth::guard()->user();
+        
+        if ($usuario->id_rol != 1) {
+            return redirect()->route('buyer.dashboard')->with('error', 'Acceso no autorizado');
+        }
+
         $categorias = Categoria::all(); 
-        $productos = Productos::all();
+        $productos = Productos::where('usuario_id', $usuario->id)->get();
         
         return view('roles.vendor.pages.dashboard.vendor_dashboard', [
-            'user' => $user,
+            'user' => $usuario, 
             'categorias' => $categorias, 
             'productos' => $productos
         ]);
     }
-
+    
     // Registrar prendas
     public function registerClothes(Request $request) {
         try {
@@ -70,10 +74,17 @@ class Dashboard extends Controller
         }
     }
     // DashBoard de control de los Compradores
-    public function dashboardBuyer() {
-        $user = Auth::user(); 
-        return view('roles.buyer.dashboard.buyer_dashboard', ['user' => $user]);
+    public function dashboardBuyer()
+    {
+        $usuario = Auth::guard()->user();
+        
+        if ($usuario->id_rol != 2) {
+            return redirect()->route('vendor.dashboard')->with('error', 'Acceso no autorizado');
+        }
+
+        return view('roles.buyer.dashboard.buyer_dashboard', ['user' => $usuario]);
     }
+
     // Mostrar formulario de configuración de cuenta
     public function showAccountForm() {
         $usuario = Auth::user();
