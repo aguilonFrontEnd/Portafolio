@@ -25,50 +25,48 @@
 
     <main class="main_categories">
 
-        <figure class="figure_categories">
+        <figure class="container_categories">
+            
+            @if($categoriaExists)
+                @foreach($productos as $producto)
+                    <span class="span_categories">
+                        <figure class="figure_categories">
+                            <img src="{{ $producto->foto_prenda ?? 'https://via.placeholder.com/300' }}" 
+                                alt="{{ $producto->nombre }}" 
+                                class="image_categories">
+                            <div class="container_cart">
+                                @if(auth()->user()->id_rol == 1) <!-- Vendor -->
+                                    <button type="button" class="btn-editar" data-id="{{ $producto->id }}">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                @else <!-- Buyer -->
+                                    <button type="button" class="btn-comprar" data-id="{{ $producto->id }}">
+                                        Comprar
+                                    </button>
+                                    <i class="fas fa-cart-plus"></i>
+                                @endif
+                            </div>
+                        </figure>
 
-            <article class="article_categories"></article>
-            <article class="article_categories"></article>
-            <article class="article_categories"></article>
-            <article class="article_categories"></article>
-            <article class="article_categories"></article>
-            <article class="article_categories"></article>
-            <article class="article_categories"></article>
-            <article class="article_categories"></article>
-            <article class="article_categories"></article>
-            <article class="article_categories"></article>
-            <article class="article_categories"></article>
-            <article class="article_categories"></article>
-            <article class="article_categories"></article>
-            <article class="article_categories"></article>
-            <article class="article_categories"></article>
-            <article class="article_categories"></article>
-            <article class="article_categories"></article>
-            <article class="article_categories"></article>
-            <article class="article_categories"></article>
-            <article class="article_categories"></article>
-            <article class="article_categories"></article>
-            <article class="article_categories"></article>
-            <article class="article_categories"></article>
-            <article class="article_categories"></article>
-            <article class="article_categories"></article>
-            <article class="article_categories"></article>
-            <article class="article_categories"></article>
-            <article class="article_categories"></article>
-            <article class="article_categories"></article>
-            <article class="article_categories"></article>
-            <article class="article_categories"></article>
-            <article class="article_categories"></article>
-            <article class="article_categories"></article>
-            <article class="article_categories"></article>
-            <article class="article_categories"></article>
-            <article class="article_categories"></article>
-            <article class="article_categories"></article>
-            <article class="article_categories"></article>
-            <article class="article_categories"></article>
+                        <div class="categories_dates">
+                            <div class="categories_name">
+                                <h3 class="categories_h3">{{ $producto->nombre }}</h3>
+                                <p class="categories_p">{{ $producto->marca ?? 'Marca Genérica' }}</p> <!-- Mostrar siempre la marca -->
+                            </div>
+                            <p class="categories_price">
+                                {{ number_format($producto->precio, 0, ',', '.') }} 
+                                <strong>CO</strong>
+                            </p>
+                        </div>
+                    </span>
+                @endforeach
+            @else
+                <div class="no-products">
+                    <p>No hay productos en esta categoría</p>
+                </div>
+            @endif
 
         </figure>
-
     </main>
 
 </body>

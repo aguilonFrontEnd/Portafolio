@@ -36,6 +36,7 @@
     <section class="section section_outlet ">
 
         <div class="container_outlet">
+            
             @foreach ($productosOutlet as $producto)
                 <span class="span_outlet">
                     <figure class="figure_outlet">

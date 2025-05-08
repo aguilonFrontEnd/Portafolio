@@ -34,8 +34,10 @@ Route::prefix('dashboard')->group(function() {
         // Index del vendedor
         Route::get('/index/{id}', [indexVendor::class, 'indexVendor'])->name('vendor.index');
     });
-    Route::get('/categoriasVendor/{categoria}', [category::class, 'showCategoriesVendor'])->name('categorias.show');
-
+    
+// Rutas para categorías
+Route::get('/categoriasBuyer/{categoria}', [CategoryController::class, 'showCategoriesBuyer'])->name('categorias.buyer.show');
+Route::get('/categoriasVendor/{categoria}', [CategoryController::class, 'showCategoriesVendor'])->name('categorias.vendor.show');
 
     // RUTAS COMPRADOR
     Route::prefix('buyer')->group(function() {

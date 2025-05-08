@@ -9,8 +9,26 @@
 }
 
 .header_category{
-    border: 1px solid black;
-    @include m.center-flex(none, center, center, none, 75%, 100%);
+    @include m.center-flex(none, space-evenly, center, 25vw, 75%, 100%);
     background-color: map.get(v.$colors, "charcoalBlack");
+    color: white;
 
+    .categories_a{
+        text-decoration: none;
+        @include m.center-flex(none, space-evenly, center, none, 50%, 35%);
+
+        i{
+            border: 1px solid white;
+            color: white;
+            @include m.border-radius(100%);
+            padding: 3.5%;
+            margin-right: 30vw;
+        }
+    }
+
+    .categories_h1{
+        @include m.font-style(2vw, bold, 5px, none, center, none);
+        text-transform: uppercase;
+
+    }
 }
