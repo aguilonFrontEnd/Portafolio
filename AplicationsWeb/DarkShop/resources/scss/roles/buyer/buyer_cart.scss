@@ -11,27 +11,29 @@ body{
     @include m.center-grid(1fr, 20vh 1fr, 100vh, 100vw);
 
     .container_header{
-        border: 1px solid black;
-        @include m.center-flex(row, space-evenly, center, 55vw, 90%, 100vw);
+        @include m.center-flex(row, space-evenly, center, 57vw, 80%, 100vw);
+        background-color: black;
+        margin-top: 1vw;
 
         a{
-            padding: 1.1%;
+            padding: 1%;
             font-size: 1.3vw;
             @include m.border-radius(100%);
-            color: black;
-            border: 1px solid black;  
+            color: white;
+            border: 1px solid white;  
             display: flex;
             align-items: center;
             text-decoration: none;
 
             i{
-                color: black;
+                color: white;
             }
         }
         
         .header_h1{
             text-transform: uppercase;
             @include m.font-style(2.2vw, none, none, center, center, none);
+            color: white;
         }
     }
 
@@ -39,15 +41,25 @@ body{
         @include m.center-flex(row, center, center, none, 95%, 100vw);
 
         .section_main{
-            border: 1px solid black;  
-            @include m.center-flex(row, start, start, none, 95%, 95%);
+            position: relative;
+            @include m.center-flex(row, start, start, 1.6vw, 95%, 95%);
+            flex-wrap: wrap;
+            padding-left: 1vw;
+            overflow: auto;
+            -ms-overflow-style: none; /* IE y Edge */
+            scrollbar-width: none; /* Firefox */
+
+            .ocultar-scroll::-webkit-scrollbar {
+                display: none; /* Chrome, Safari y Opera */
+            }
 
             .span_outlet {
-                @include m.center-grid(1fr, 90% 10%, 70%, 17%);
+                @include m.center-grid(1fr, 88% 12%, 70%, 21%);
                 flex-shrink: 0;
-                max-width: 15%;
+                max-width: 15.1%;
                 position: relative;
-              
+                flex-shrink: 0;
+
                     .figure_outlet {
                         position: relative;
                         @include m.center-flex(row, center, center, none, 100%, 100%);
@@ -67,25 +79,51 @@ body{
                         height: 10vh;
                         background: rgba(0, 0, 0, 0.7); 
                         color: white;
-                        @include m.center-flex(row, space-evenly, center, none, 10%, 100%);
+                        @include m.center-flex(column, center, center, none, 100%, 100%);
                         padding: 8px 0;
                         transition: all 0.3s ease;
                         transform: translateY(100%); 
                         z-index: 10;
                         transition: .8s all;
+                              
+                        .outlet_dates {
+                            @include m.center-flex(column, center, center, 10px, 50%, 100%);
+                            padding-top: 10vw;
+                        
+                            .outlet_name {
+                                @include m.center-flex(column, center, center, none, 100%, 100%);
+                        
+                                .outlet_h3 {
+                                    @include m.font-style(.9vw, bold, 0.5px, none, center, none);
+                                }
+                        
+                                .outlet_p {
+                                    @include m.font-style(0.68vw, none, 0.5px, none, center, none);
+                                }
 
-                
-                        button {
-                        padding: 4% 20%;
-                        border: 1px solid white;
-                        cursor: pointer;
-                        @include m.font-style(0.7vw, bold, 2px, none, center, none);
-                        text-transform: uppercase;
-                        margin-right: 5px;
+                                .outlet_price{
+                                    padding-top: 1.5vw;
+                                    @include m.font-style(1vw, none, 0.5px, none, center, none);
+
+                                }
+                            }
                         }
-                
+                        
+                        button {
+                            overflow: hidden;
+                            padding: 6% 20%;
+                            border: 1px solid white;
+                            cursor: pointer;
+                            @include m.font-style(0.7vw, bold, 2px, none, center, none);
+                            text-transform: uppercase;
+                            margin-right: 5px;
+                            margin-bottom: .5vw;
+                        }
+
                         i {
-                            font-size: 1.05vw;
+                            padding-top: .7vw;
+                            padding-right: .8vw;
+                            @include m.font-style(1.2w, none, 0.5px, none, right, none);
                         }
                     }
                 
@@ -102,31 +140,6 @@ body{
                             }
                         }
                     }
-                
-                    .outlet_dates {
-                    @include m.center-grid(1fr 30%, 1fr, 100%, 100%);
-                
-                    .outlet_name {
-                        @include m.center-flex(column, start, start, none, 100%, 100%);
-                        padding-left: 0.2vw;
-                
-                        .outlet_h3 {
-                        padding-top: 0.4vw;
-                        @include m.font-style(0.55vw, bold, 0.5px, none, left, none);
-                        }
-                
-                        .outlet_p {
-                        padding-left: 0.1vw;
-                        @include m.font-style(0.65vw, none, 0.5px, none, left, none);
-                        }
-                    }
-                
-                    .outlet_price {
-                        padding-top: 1vw;
-                        padding-left: 0.8vw;
-                        @include m.font-style(0.65vw, none, 0.5px, none, left, none);
-                    }
-                }
             }
         }
     }

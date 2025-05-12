@@ -34,62 +34,105 @@
 
         <section class="section_main">
 
+            <!-- Cart de la prenda -->
             <span class="span_outlet">
                     <figure class="figure_outlet">
-                        <img src="ruta/a/tu/imagen1.jpg" alt="Producto 1" class="image_outlet">
+                        <img src="https://tennis.vtexassets.com/arquivos/ids/2460444/tshirt-para-hombre-tennis-negro.jpg?v=638629000451700000" alt="Producto 1" class="image_outlet">
                         <div class="container_cart">
-                            <button type="button">Comprar</button>
-                            <i class="fas fa-cart-plus"></i> {{-- Carro de compra --}}
+                            
+                               <div class="outlet_dates">
+                                    <div class="outlet_name">
+                                        <h3 class="outlet_h3">Nombre del Producto 1</h3>
+                                        <p class="outlet_p">Marca del Producto 1</p>
+                                        <p class="outlet_price">225.000 <strong>CO</strong></p>
+                                    </div>
+                                </div>
+
+                            <button type="button">Eliminar</button>
                         </div>
                     </figure>
-
-                    <div class="outlet_dates">
-                        <div class="outlet_name">
-                            <h3 class="outlet_h3">Nombre del Producto 1</h3>
-                            <p class="outlet_p">Marca del Producto 1</p>
-                        </div>
-                        <p class="outlet_price">100,000 <strong>CO</strong></p>
-                    </div>
             </span>
 
+            
+            <!-- Cart de la prenda -->
             <span class="span_outlet">
                     <figure class="figure_outlet">
-                        <img src="ruta/a/tu/imagen2.jpg" alt="Producto 2" class="image_outlet">
+                        <img src="https://tennis.vtexassets.com/arquivos/ids/2460444/tshirt-para-hombre-tennis-negro.jpg?v=638629000451700000" alt="Producto 1" class="image_outlet">
                         <div class="container_cart">
-                            <button type="button">Comprar</button>
-                            <i class="fas fa-cart-plus"></i> {{-- Carro de compra --}}
+                            
+                               <div class="outlet_dates">
+                                    <div class="outlet_name">
+                                        <h3 class="outlet_h3">Nombre del Producto 1</h3>
+                                        <p class="outlet_p">Marca del Producto 1</p>
+                                        <p class="outlet_price">225.000 <strong>CO</strong></p>
+                                    </div>
+                                </div>
+
+                            <button type="button">Eliminar</button>
                         </div>
                     </figure>
-
-                    <div class="outlet_dates">
-                        <div class="outlet_name">
-                            <h3 class="outlet_h3">Nombre del Producto 2</h3>
-                            <p class="outlet_p">Marca del Producto 2</p>
-                        </div>
-                        <p class="outlet_price">150,000 <strong>CO</strong></p>
-                    </div>
             </span>
 
+            
+            <!-- Cart de la prenda -->
             <span class="span_outlet">
                     <figure class="figure_outlet">
-                        <img src="ruta/a/tu/imagen3.jpg" alt="Producto 3" class="image_outlet">
+                        <img src="https://tennis.vtexassets.com/arquivos/ids/2460444/tshirt-para-hombre-tennis-negro.jpg?v=638629000451700000" alt="Producto 1" class="image_outlet">
                         <div class="container_cart">
-                            <button type="button">Comprar</button>
-                            <i class="fas fa-cart-plus"></i> {{-- Carro de compra --}}
+                            
+                               <div class="outlet_dates">
+                                    <div class="outlet_name">
+                                        <h3 class="outlet_h3">Nombre del Producto 1</h3>
+                                        <p class="outlet_p">Marca del Producto 1</p>
+                                        <p class="outlet_price">225.000 <strong>CO</strong></p>
+                                    </div>
+                                </div>
+
+                            <button type="button">Eliminar</button>
                         </div>
                     </figure>
-
-                    <div class="outlet_dates">
-                        <div class="outlet_name">
-                            <h3 class="outlet_h3">Nombre del Producto 3</h3>
-                            <p class="outlet_p">Marca del Producto 3</p>
-                        </div>
-                        <p class="outlet_price">200,000 <strong>CO</strong></p>
-                    </div>
             </span>
 
+            
+            <!-- Cart de la prenda -->
+            <span class="span_outlet">
+                    <figure class="figure_outlet">
+                        <img src="https://tennis.vtexassets.com/arquivos/ids/2460444/tshirt-para-hombre-tennis-negro.jpg?v=638629000451700000" alt="Producto 1" class="image_outlet">
+                        <div class="container_cart">
+                            
+                               <div class="outlet_dates">
+                                    <div class="outlet_name">
+                                        <h3 class="outlet_h3">Nombre del Producto 1</h3>
+                                        <p class="outlet_p">Marca del Producto 1</p>
+                                        <p class="outlet_price">225.000 <strong>CO</strong></p>
+                                    </div>
+                                </div>
+
+                            <button type="button">Eliminar</button>
+                        </div>
+                    </figure>
+            </span>
+
+            
+            <!-- Cart de la prenda -->
+            <span class="span_outlet">
+                <figure class="figure_outlet">
+                        <img src="https://tennis.vtexassets.com/arquivos/ids/2460444/tshirt-para-hombre-tennis-negro.jpg?v=638629000451700000" alt="Producto 1" class="image_outlet">
+                        <div class="container_cart">
+                            
+                               <div class="outlet_dates">
+                                    <div class="outlet_name">
+                                        <h3 class="outlet_h3">Nombre del Producto 1</h3>
+                                        <p class="outlet_p">Marca del Producto 1</p>
+                                        <p class="outlet_price">225.000 <strong>CO</strong></p>
+                                    </div>
+                                </div>
+                        <button type="button">Eliminar</button>
+                    </div>
+                </figure>
+            </span>
+            
         </section>
-
     </main>
 
 

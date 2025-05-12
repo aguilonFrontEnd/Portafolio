@@ -51,7 +51,7 @@
                         <div class="categories_dates">
                             <div class="categories_name">
                                 <h3 class="categories_h3">{{ $producto->nombre }}</h3>
-                                <p class="categories_p">{{ $producto->marca ?? 'Marca Genérica' }}</p> <!-- Mostrar siempre la marca -->
+                                <p class="categories_p">{{ $producto->marca ?? 'Marca Genérica' }}</p>
                             </div>
                             <p class="categories_price">
                                 {{ number_format($producto->precio, 0, ',', '.') }} 
