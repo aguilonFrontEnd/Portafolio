@@ -17,6 +17,7 @@
 </nav>
 
 <figure class="header_figure">
+
     <a href="{{ route('vendor.dashboard') }}" class="profile-link">
         @auth
             @if(auth()->user()->foto_perfil)

@@ -141,7 +141,7 @@ body {
             overflow-y: scroll;  
             scrollbar-width: none; 
           
-            .span_oulet {
+            .span_outlet {
                 @include m.center-grid(1fr, 90% 10%, 100%, 15%);
                 flex-shrink: 0;
                 max-width: 15%;

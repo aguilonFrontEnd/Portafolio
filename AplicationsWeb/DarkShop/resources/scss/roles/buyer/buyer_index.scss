@@ -33,8 +33,9 @@ body {
     /* SECCIONES CON DELAYS */
     .section_introduction {
         background-color: map.get(v.$colors, "pureWhite");
-        @include m.center-grid(1fr, 6vh 1fr, 99.5vh, 100%);
+        @include m.center-grid(1fr, 6vh 1fr, 99vh, 100%);
         animation: none;
+        overflow: hidden;
 
         .span_introduction{
             @include m.size(100%, 100%);

@@ -8,6 +8,8 @@ use App\Http\Controllers\Auth\startSesion;
 use App\Http\Controllers\Index\indexVendor;
 use App\Http\Controllers\Index\indexBuyer;
 use App\Http\Controllers\Categories\category;
+use App\Http\Controllers\Cart\cartController;
+
 
 // RUTAS PÚBLICAS (login/register)
 Route::prefix('sesion')->group(function() {
@@ -55,3 +57,7 @@ Route::get('/categoriasVendor/{categoria}', [CategoryController::class, 'showCat
         return redirect()->route('sesion.login');
     })->name('logout');
 });
+
+
+// RUTAS PARA ACCEDER AL CARRITO DE COMPRAS DE LA PERSONA QUE COMPRA
+    Route::get('/carrito', [cartController::class, 'cartSelection']);

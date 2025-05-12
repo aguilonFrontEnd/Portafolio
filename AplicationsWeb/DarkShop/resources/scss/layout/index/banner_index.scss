@@ -14,14 +14,15 @@
 
     .banner-track {
         display: flex;
-        width: 100%;
+        width: 100vw;
         height: 100%;
         position: relative;
     }
 
     .span_banner {
         @include m.center-flex(row, center, center, none, 100%, 100%);
-        position: absolute;
+        position: absolute;    
+        overflow: hidden;
         top: 0;
         left: 0;
         opacity: 0;

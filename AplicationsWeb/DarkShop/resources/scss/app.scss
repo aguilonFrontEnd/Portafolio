@@ -35,10 +35,12 @@
 @use 'scss/roles/vendor/vendor_index' as vendor;
 
 
-
 // 7 Categorias (Camisetas, camisas, pantalones, zapatos, zapatillas, gorras, pantalones cortos) 
 @use 'scss/roles/buyer/buyer_category' as buyer;
 @use 'scss/roles/vendor/categories/vendor_category' as vendor;
+
+// 8 Carrito de compras (Buyer)
+@use 'scss/roles/buyer/buyer_cart' as buyer;
 
 
 
