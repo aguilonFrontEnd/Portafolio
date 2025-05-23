@@ -16,23 +16,6 @@
         .span_header{
             @include m.center-flex(row, start, center, .5vw, 100%, 30%);
 
-            /* Redirección al index */
-            a{
-                @include m.center-flex(none, center, center, none, 30%, 10%);
-                text-decoration: none;
-                color: black;
-                
-                /* Icono de volver atras "Index Usuario Logueado" */
-                i{
-                    padding: 1vw;
-                    font-size: 1.2vw;
-                    border: 1px solid black;
-                    @include m.border-radius(100%);
-                    cursor: pointer;
-                }
-            }
-
-
             /* Titulo de la plataforma */
             .span_h1{
                 @include m.font-style(3.5vw, bold, 1.5px, none, left, none);

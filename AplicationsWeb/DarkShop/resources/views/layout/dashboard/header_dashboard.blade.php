@@ -2,13 +2,9 @@
 
 <header class="darkshop dashboard_header">
     <span class="span_header">
-        <!-- Botón de retroceso dinámico -->
-        <a href="{{ auth()->check() ? (auth()->user()->id_rol == 1 ? route('vendor.index', ['id' => auth()->id()]) : route('buyer.index')) : '#' }}" 
-           class="back-link">
-            <i class="fas fa-arrow-left"></i>
-        </a>
 
-        <h1 class="span_h1">DARSHOP</h1>
+        <h1 class="span_h1">DARKSHOP</h1>
+        
     </span>
 
     @auth

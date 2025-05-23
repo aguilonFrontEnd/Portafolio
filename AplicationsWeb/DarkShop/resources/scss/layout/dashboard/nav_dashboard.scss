@@ -16,6 +16,7 @@
                 @include m.center-flex(column, center, end, none, 80%, 60%);
 
             .item_nav {
+                text-decoration: none;
                 @include m.center-flex(column, center, end, none, 100%, 100%);
    
                 .btn_nav {

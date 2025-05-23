@@ -11,15 +11,19 @@ use App\Http\Controllers\Categories\category;
 use App\Http\Controllers\Cart\cartController;
 
 
-// RUTAS PÚBLICAS (login/register)
+// RUTAS PÚBLICAS 
 Route::prefix('sesion')->group(function() {
+
+    // Logueo de los usarios
     Route::get('/login', [startSesion::class, 'loginUsers'])->name('sesion.login');
     Route::post('/logueo_post', [startSesion::class, 'logueo'])->name('loginUser');
+
+    // Registro de los usurios
     Route::get('/register', [startSesion::class, 'registerUsers'])->name('register');
     Route::post('/register_post', [startSesion::class, 'register'])->name('registerUser');
 });
 
-// RUTAS PRIVADAS (requieren estar logueado, pero sin middleware)
+// RUTAS DE LOS DASHBOARD
 Route::prefix('dashboard')->group(function() {
     // RUTAS VENDEDOR
     Route::prefix('vendor')->group(function() {
@@ -32,31 +36,29 @@ Route::prefix('dashboard')->group(function() {
         Route::get('/prendas/{id}', [showClothes::class, 'show'])->name('productos.show');
         Route::put('/productos/{id}', [showClothes::class, 'update'])->name('productos.update');
         Route::delete('/productos/{id}', [showClothes::class, 'destroy'])->name('productos.destroy');
-        
-        // Index del vendedor
-        Route::get('/index/{id}', [indexVendor::class, 'indexVendor'])->name('vendor.index');
     });
-    
-// Rutas para categorías
-Route::get('/categoriasBuyer/{categoria}', [CategoryController::class, 'showCategoriesBuyer'])->name('categorias.buyer.show');
-Route::get('/categoriasVendor/{categoria}', [CategoryController::class, 'showCategoriesVendor'])->name('categorias.vendor.show');
 
     // RUTAS COMPRADOR
     Route::prefix('buyer')->group(function() {
         Route::get('/', [dashboard::class, 'dashboardBuyer'])->name('buyer.dashboard');
         Route::get('/index', [indexBuyer::class, 'indexBuyer'])->name('buyer.index');
+        
+
+        // Rutas para categorías para los compradores
+        Route::get('/categoriasBuyer/{categoria}', [category::class, 'showCategoriesBuyer'])->name('categorias.buyer.show');
+        Route::get('/categoriasBuyer/{categoria}', [category::class, 'showCategoriesBuyer'])->name('categorias.show');
+
     });
 
-    Route::get('/categoriasBuyer/{categoria}', [category::class, 'showCategoriesBuyer'])->name('categorias.show');
 
-    // Cerrar sesión (compartido)
-    Route::post('/logout', function () {
-        Auth::logout();
-        request()->session()->invalidate();
-        request()->session()->regenerateToken();
-        return redirect()->route('sesion.login');
-    })->name('logout');
-});
+        // Cerrar sesión (compartido)
+        Route::post('/logout', function () {
+            Auth::logout();
+            request()->session()->invalidate();
+            request()->session()->regenerateToken();
+            return redirect()->route('sesion.login');
+        })->name('logout');
+    });
 
 
 // RUTAS PARA ACCEDER AL CARRITO DE COMPRAS DE LA PERSONA QUE COMPRA

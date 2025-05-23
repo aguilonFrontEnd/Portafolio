@@ -15,7 +15,7 @@ class indexBuyer extends Controller
     public function indexBuyer()
     {
         if(Auth::user()->id_rol != 2) {
-            return redirect()->route('vendor.index', ['id' => Auth::id()])->with('error', 'Acceso no autorizado');
+            return redirect()->route('vendor.dashboard', ['id' => Auth::id()])->with('error', 'Acceso no autorizado');
         }
     
         $productosOutlet = Productos::whereHas('categorias', function($query) {

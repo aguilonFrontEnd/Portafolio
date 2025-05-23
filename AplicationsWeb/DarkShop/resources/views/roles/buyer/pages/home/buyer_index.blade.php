@@ -41,19 +41,22 @@
                 <span class="span_outlet">
                     <figure class="figure_outlet">
                         <img src="{{ $producto->foto_prenda }}" alt="{{ $producto->nombre }}" class="image_outlet">
+                        
                         <div class="container_cart">
-                            <button type="button">Comprar</button>
-                            <i class="fas fa-cart-plus"></i> {{-- Carro de compra --}}
-                        </div>
-                    </figure>
+                            <div class="outlet_dates">
+                                <div class="outlet_name">
+                                    <h3 class="outlet_h3">{{ $producto->nombre }}</h3>
+                                    <p class="outlet_p">{{ $producto->marca }}</p>
+                                    <p class="outlet_price">{{ number_format($producto->precio) }} <strong>CO</strong></p>
+                                </div>
+                            </div>
 
-                    <div class="outlet_dates">
-                        <div class="outlet_name">
-                            <h3 class="outlet_h3">{{ $producto->nombre }}</h3>
-                            <p class="outlet_p">{{ $producto->marca }}</p>
+                            <div class="btn_oulet">
+                                <a link href="" >Comprar</a>
+                            </div>
                         </div>
-                        <p class="outlet_price">{{ number_format($producto->precio) }} <strong>CO</strong></p>
-                    </div>
+
+                    </figure>
                 </span>
             @endforeach
         </div>

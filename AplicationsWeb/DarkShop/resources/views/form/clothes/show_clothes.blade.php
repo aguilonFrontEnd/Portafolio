@@ -114,7 +114,7 @@
             <!-- Botones -->
             <div class="container_form input_btn">
                 <span class="span_btn">
-                    <button type="button" class="btn_post" id="destroyBtn">Eliminar</button>
+                    <button type="button" class="btn_post" id="destroy">Eliminar</button>
                     <button type="submit" class="btn_post">Guardar</button>
                 </span>
             </div>

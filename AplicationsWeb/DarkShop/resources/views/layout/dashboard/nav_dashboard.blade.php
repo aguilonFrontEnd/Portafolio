@@ -5,12 +5,11 @@
 
     <ul class="option_nav">
 
-        <!-- Opción 1: AÑADIR con icono de canasta de compras -->
-        <li class="item_nav">
+        <a class="item_nav" href="{{ auth()->check() && auth()->user()->id_rol == 2 ? route('buyer.index') : '#' }}">
             <button class="btn_nav" id="add">
                 <i class="fas fa-shopping-cart"></i> AÑADIR
             </button>
-        </li>
+        </a>
 
         <!-- Opción 2: PRODUCTOS -->
         <li class="item_nav">

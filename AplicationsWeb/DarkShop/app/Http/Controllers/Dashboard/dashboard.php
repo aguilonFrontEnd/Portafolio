@@ -14,10 +14,8 @@ use Illuminate\Support\Facades\Hash;
 
 class Dashboard extends Controller
 {
-
     public function dashboardVendor()
     {
-
         $usuario = Auth::guard()->user();
         
         if ($usuario->id_rol != 1) {
@@ -33,7 +31,7 @@ class Dashboard extends Controller
             'productos' => $productos
         ]);
     }
-    
+
     // Registrar prendas
     public function registerClothes(Request $request) {
         try {
@@ -73,6 +71,7 @@ class Dashboard extends Controller
                    ->with('error', 'Error al registrar la prenda: ' . $e->getMessage());
         }
     }
+
     // DashBoard de control de los Compradores
     public function dashboardBuyer()
     {

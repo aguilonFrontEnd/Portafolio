@@ -1,3 +1,4 @@
+@use "sass:map";
 @use '/resources/scss/abstracts/mixin' as m;
 @use '/resources/scss/abstracts/variables' as v;
 
@@ -11,26 +12,28 @@ body{
     @include m.center-grid(1fr, 20vh 1fr, 100vh, 100vw);
 
     .container_header{
-        border: 1px solid black;
-        @include m.center-flex(row, space-evenly, center, 55vw, 90%, 100vw);
+        background-color: map.get(v.$colors, "jetBlack"); 
+        margin-top: 1vw;              
+        @include m.center-flex(row, space-evenly, center, 60vw, 80%, 100vw);
 
         a{
             padding: 1.1%;
             font-size: 1.3vw;
             @include m.border-radius(100%);
-            color: black;
-            border: 1px solid black;  
+            border: 1px solid white;  
             display: flex;
             align-items: center;
             text-decoration: none;
+        
 
             i{
-                color: black;
+                color: map.get(v.$colors, "offWhite");
             }
         }
         
         .header_h1{
             text-transform: uppercase;
+            color: map.get(v.$colors, "offWhite");
             @include m.font-style(2.2vw, none, none, center, center, none);
         }
     }
@@ -38,96 +41,148 @@ body{
     .container_main{
         @include m.center-flex(row, center, center, none, 95%, 100vw);
 
-        .section_main{
-            border: 1px solid black;  
-            @include m.center-flex(row, start, start, none, 95%, 95%);
+        .form_main{
+            @include m.center-grid(65% 1fr ,1fr, 100%, 97%);
 
-            .span_outlet {
-                @include m.center-grid(1fr, 90% 10%, 70%, 17%);
-                flex-shrink: 0;
-                max-width: 15%;
-                position: relative;
-              
-                    .figure_outlet {
-                        position: relative;
-                        @include m.center-flex(row, center, center, none, 100%, 100%);
-                        overflow: hidden; 
-                
-                    .image_outlet {
-                        @include m.size(99%, 100%);
-                        object-fit: cover;
-                        border: 1px solid black;
-                        transition: transform 0.3s ease; 
-                    }
-                
-                    .container_cart {
-                        position: absolute;
-                        bottom: -50px;
-                        left: 0;
-                        height: 10vh;
-                        background: rgba(0, 0, 0, 0.7); 
-                        color: white;
-                        @include m.center-flex(row, space-evenly, center, none, 10%, 100%);
-                        padding: 8px 0;
-                        transition: all 0.3s ease;
-                        transform: translateY(100%); 
-                        z-index: 10;
-                        transition: .8s all;
+            .figure_main{
+                @include m.center-flex(column, start, start, 15px, 99.5%, 96%);
 
-                
-                        button {
-                        padding: 4% 20%;
-                        border: 1px solid white;
-                        cursor: pointer;
-                        @include m.font-style(0.7vw, bold, 2px, none, center, none);
-                        text-transform: uppercase;
-                        margin-right: 5px;
-                        }
-                
-                        i {
-                            font-size: 1.05vw;
-                        }
+                .shopping_main{
+                    @include m.center-flex(row, space-evenly, center, 22vw, 20%, 100%);
+                    border-bottom:  1px solid map.get(v.$colors, "lightGray");
+
+                    .name_shopping {
+                        width: 45%;
+                        @include m.font-style(2.3vw, none, none, center, center, none);
+                        color: map.get(v.$colors, "jetBlack");
                     }
-                
-                    &:hover {
-                        .container_cart {
-                            transform: translateY(0); 
-                            bottom: 0; 
-                        }
-                
-                            .image_outlet {
-                                opacity: .7;
-                                transition: .8s all;
-                                transform: scale(1.05); 
+
+                    .count_shopping{
+                        @include m.font-style(1vw, none, none, center, center, none);
+                        color: map.get(v.$colors, "lightGray");
+                    }
+                }
+
+                .article_main{
+                    @include m.center-flex(column, start, start, 8px, 67%, 100%);
+                    overflow-y: scroll;
+                    flex-wrap: nowrap;
+                    scrollbar-width: none; // Firefox
+                    -ms-overflow-style: none; // IE/Edge
+                    
+                    &::-webkit-scrollbar {
+                        display: none; // Chrome/Safari
+                    }
+
+                    .items_main{
+                        @include m.center-flex(row, center, start, none, 50%, 100%);
+                        min-height: 35%;
+                        border-bottom: 1px solid  map.get(v.$colors, "lightGray");
+                        flex-shrink: 0;
+
+                        .image_main{
+                            @include m.center-flex(row, center, center, none, 96%, 15%);
+
+                            .image_cart{
+                                @include m.size(95%, 95%);
+                                object-fit: cover;
                             }
                         }
-                    }
-                
-                    .outlet_dates {
-                    @include m.center-grid(1fr 30%, 1fr, 100%, 100%);
-                
-                    .outlet_name {
-                        @include m.center-flex(column, start, start, none, 100%, 100%);
-                        padding-left: 0.2vw;
-                
-                        .outlet_h3 {
-                        padding-top: 0.4vw;
-                        @include m.font-style(0.55vw, bold, 0.5px, none, left, none);
+
+                        .date_main{
+                            @include m.center-flex(column, center, start, none, 96%, 35%);
+                            padding-left: 2.5vw;
+
+                            .category_main{
+                                @include m.font-style(1vw, none, none, center, center, none);
+                                color: map.get(v.$colors, "jetBlack");                  
+                            }
+
+                            .name_main{
+                                @include m.font-style(1.2vw, none, none, center, center, none);
+                                color: map.get(v.$colors, "jetBlack");
+                            }
+
+                            .march_main{
+                                padding-left: .2vw;
+                                @include m.font-style(.8vw, none, none, center, center, none);
+                                color: map.get(v.$colors, "middleGray");
+                            }
                         }
-                
-                        .outlet_p {
-                        padding-left: 0.1vw;
-                        @include m.font-style(0.65vw, none, 0.5px, none, left, none);
+
+                        .select_count{
+                            @include m.center-flex(row, center, center, 10px, 96%, 20%);  
+
+                            .count_option{
+                                cursor: pointer;
+                                @include m.font-style(1.3vw, none, none, center, center, none);
+                                color: map.get(v.$colors, "jetBlack");
+                            }
+
+                            .option_input{
+                                border: none;
+                                outline: none;
+                                width: 20%;
+                                height: 20%;
+                                text-align: center;
+                            }
                         }
+
+                        .price_main{
+                            @include m.center-flex(row, center, center, none, 96%, 15%);
+                        }
+
+                        .icon_main{
+                            @include m.center-flex(row, center, center, none, 96%, 10%);
+
+                                .delete_main{
+                                    @include m.center-flex(none, center, center, none, 100%, 100%);
+                                    text-decoration: none;
+
+                                    i{
+                                       font-size: 1.2vw;
+                                       color : map.get(v.$colors, "jetBlack");
+                                    }
+                                }
+
+                        }     
+                    }           
+                }
+
+                .redirect_main{
+                    border: 1px solid black;
+                    @include m.center-flex(row, center, center, 10px, 10%, 23%);
+                    margin-left: .2vw;
+                    @include m.border-radius(3px);
+                    cursor: pointer;
+                    transition: .2s all;
+
+                    i{
+                        padding-top: .3vw;
+                        font-size: 1vw
                     }
-                
-                    .outlet_price {
-                        padding-top: 1vw;
-                        padding-left: 0.8vw;
-                        @include m.font-style(0.65vw, none, 0.5px, none, left, none);
+
+                    a{
+                        @include m.font-style(1.1vw, none, none, center, center, none);
+                        color: map.get(v.$colors, "jetBlack");
+                        
+                    }
+
+                    &:hover{
+                        color: map.get(v.$colors, "pearlWhite");
+                        background-color: map.get(v.$colors, "jetBlack");
+
+                        a{
+                            color: map.get(v.$colors, "pearlWhite");
+                        }
                     }
                 }
             }
+
+            .aside_main{
+                background-color: map.get(v.$colors, "veryLightGray");
+                box-shadow: -10px 0 35px 5px map.get(v.$colors, "veryLightGray");
+            } 
         }
     }
 }

@@ -133,7 +133,7 @@ body {
         animation-delay: 0.2s;
 
         .container_outlet{
-            @include m.center-flex(row, start, center, 3vw, 85%, 90%);
+            @include m.center-flex(row, start, center, .8vw, 85%, 90%);
             margin-left: 3vw;
             padding: 2%;
             overflow-x: auto;
@@ -150,9 +150,9 @@ body {
                 position: relative;
               
                     .figure_outlet {
-                    position: relative;
-                    @include m.center-flex(row, center, center, none, 100%, 100%);
-                    overflow: hidden; 
+                        position: relative;
+                        @include m.center-flex(row, center, center, none, 100%, 100%);
+                        overflow: hidden; 
                 
                     .image_outlet {
                         @include m.size(99%, 100%);
@@ -165,30 +165,65 @@ body {
                         position: absolute;
                         bottom: -50px;
                         left: 0;
-                        height: 10vh;
-                        background: rgba(0, 0, 0, 0.7); 
+                        background: rgba(0, 0, 0, 0.85); 
                         color: white;
-                        @include m.center-flex(row, space-evenly, center, none, 10%, 100%);
-                        padding: 8px 0;
+                        @include m.center-flex(column, center, center, .5vw, 100%, 100%);
                         transition: all 0.3s ease;
                         transform: translateY(100%); 
                         z-index: 10;
                         transition: .8s all;
 
-                
-                        button {
-                        padding: 4% 20%;
-                        border: 1px solid white;
-                        background: map.get(v.$colors, "pureWhite");
-                        color:  map.get(v.$colors, "midnightBlack");
-                        cursor: pointer;
-                        @include m.font-style(0.7vw, bold, 2px, none, center, none);
-                        text-transform: uppercase;
-                        margin-right: 5px;
+                        .outlet_dates {
+                            @include m.center-flex(column, center, center, 5vw, 35%, 100%);
+                            padding-top: 12vw;
+                        
+                                .outlet_name {
+                                    @include m.center-flex(column, center, center, none, 100%, 100%);
+                        
+                                .outlet_h3 {
+                                    @include m.font-style(.65vw, bold, 0.5px, none, left, none);
+                                }
+                        
+                                .outlet_p {
+                                    @include m.font-style(0.85vw, none, 0.5px, none, left, none);
+                                    padding-top: .5vw;
+                                }
+
+                                .outlet_price {
+                                    padding-top: 2.5vw;
+                                    padding-left: 0.8vw;
+                                    @include m.font-style(1.1vw, none, 0.5px, none, left, none);
+                                }
+                            }
                         }
-                
-                        i {
-                            font-size: 1.05vw;
+
+                        .btn_oulet{
+                            @include m.center-flex(row, center, center, 4px, 20%, 100%);
+
+                            a {
+                                padding: 6% 20%;
+                                border: 1px solid white;
+                                background: map.get(v.$colors, "pureWhite");
+                                color:  map.get(v.$colors, "midnightBlack");
+                                cursor: pointer;
+                                @include m.font-style(0.7vw, bold, 2px, none, center, none);
+                                text-transform: uppercase;
+                                margin-right: 5px;
+                                text-decoration: none;
+                                @include m.border-radius(3px);
+                            }
+                    
+                            .oulet_card{
+                                background-color: transparent;
+                                border: none;
+                                text-decoration: none;
+                                padding: 1% 1%;
+
+                                i {
+                                    color: white;
+                                    font-size: 1.2vw;
+                                }
+                            } 
                         }
                     }
                 
@@ -198,37 +233,11 @@ body {
                             bottom: 0; 
                         }
                 
-                            .image_outlet {
-                                opacity: .7;
-                                transition: .8s all;
-                                transform: scale(1.05); 
-                            
-                            }
+                        .image_outlet {
+                            opacity: .7;
+                            transition: .8s all;
+                            transform: scale(1.05);  
                         }
-                    }
-                
-                    .outlet_dates {
-                    @include m.center-grid(1fr 30%, 1fr, 100%, 100%);
-                
-                    .outlet_name {
-                        @include m.center-flex(column, start, start, none, 100%, 100%);
-                        padding-left: 0.2vw;
-                
-                        .outlet_h3 {
-                        padding-top: 0.4vw;
-                        @include m.font-style(0.55vw, bold, 0.5px, none, left, none);
-                        }
-                
-                        .outlet_p {
-                        padding-left: 0.1vw;
-                        @include m.font-style(0.65vw, none, 0.5px, none, left, none);
-                        }
-                    }
-                
-                    .outlet_price {
-                        padding-top: 1vw;
-                        padding-left: 0.8vw;
-                        @include m.font-style(0.65vw, none, 0.5px, none, left, none);
                     }
                 }
             }
